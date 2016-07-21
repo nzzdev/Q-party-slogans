@@ -1,0 +1,35 @@
+.q-opinion-item {
+  @clearfix ();
+  box-sizing: border-box;
+  margin: 20px 0px; }
+  .q-opinion-item * {
+    box-sizing: inherit; }
+  .q-opinion-item .q-opinion__position .q-opinion__label--level1 {
+    text-transform: uppercase;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+    margin-top: 18px; }
+  .q-opinion-item .q-opinion__position .q-opinion__label--level2 {
+    margin-top: 10px; }
+  .q-opinion-item .q-opinion__position .q-opinion__parties .s-font-note-s, .q-opinion-item .q-opinion__position .q-opinion__organisations .s-font-note-s {
+    color: #0a0a0a;
+    margin: 7px 0px 3px; }
+  .q-opinion-item .q-opinion__position .q-opinion__party, .q-opinion-item .q-opinion__position .q-opinion__org {
+    border-radius: 3px;
+    display: inline-block;
+    padding: 0px 2px; }
+  .q-opinion-item .q-opinion__position--yes .s-font-note-s {
+    color: #0084c7;
+    border-color: #c0d4ed; }
+  .q-opinion-item .q-opinion__position--yes .q-opinion__party, .q-opinion-item .q-opinion__position--yes .q-opinion__org {
+    background-color: #c0d4ed; }
+  .q-opinion-item .q-opinion__position--no .s-font-note-s {
+    color: #c31906;
+    border-color: #f9b9a8; }
+  .q-opinion-item .q-opinion__position--no .q-opinion__party, .q-opinion-item .q-opinion__position--no .q-opinion__org {
+    background-color: #f9b9a8; }
+  .q-opinion-item .q-opinion__position--undecided .s-font-note-s {
+    color: #5c5c5c;
+    border-color: #d6d6d6; }
+  .q-opinion-item .q-opinion__position--undecided .q-opinion__party, .q-opinion-item .q-opinion__position--undecided .q-opinion__org {
+    background-color: #d6d6d6; }

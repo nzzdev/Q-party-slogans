@@ -1,0 +1,75 @@
+{
+  "name": "",
+  "version": "0.0.0",
+  "description": "Q Opinion",
+  "keywords": [
+    "storytelling",
+    "nzz"
+  ],
+  "homepage": "https://github.com/nzzdev//",
+  "bugs": {
+    "url": "https://github.com/nzzdev//issues"
+  },
+  "license": "",
+  "author": "<storytelling@nzz.ch> (NZZ Storytelling)",
+  "main": "dist/amd/index.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/nzzdev/"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.1.0",
+    "aws-sdk": "^2.2.17",
+    "browser-sync": "^2.10.0",
+    "conventional-changelog": "0.0.11",
+    "del": "^1.1.0",
+    "eyeglass": "0.7.1",
+    "gulp": "^3.8.10",
+    "gulp-babel": "^5.1.0",
+    "gulp-bump": "^0.1.11",
+    "gulp-cheerio": "^0.6.2",
+    "gulp-download": "0.0.1",
+    "gulp-env": "^0.2.0",
+    "gulp-file": "^0.3.0",
+    "gulp-jshint": "^1.9.0",
+    "gulp-keycdn": "0.0.3",
+    "gulp-postcss": "^6.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-s3-upload": "^1.5.0",
+    "gulp-sass": "^2.1.0",
+    "gulp-shell": "^0.5.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-util": "^3.0.7",
+    "gulp-yuidoc": "^0.1.2",
+    "jasmine-core": "^2.1.3",
+    "jshint-stylish": "^1.0.0",
+    "jspm": "^0.16.23",
+    "object.assign": "^1.0.3",
+    "q-nzzch-theme": "git+ssh://git@github.com/nzzdev/q-nzzch-theme.git#0.0.2",
+    "require-dir": "^0.1.0",
+    "run-sequence": "^1.0.2",
+    "slug": "^0.9.1",
+    "storytelling-ui-kit": "git+ssh://git@github.com/nzzdev/storytelling-ui-kit.git#0.0.1",
+    "systemjs-builder": "^0.15.5",
+    "vinyl-paths": "^1.0.0",
+    "yargs": "^2.1.1"
+  },
+  "jspm": {
+    "main": "index",
+    "format": "amd",
+    "directories": {
+      "lib": "dist/amd"
+    },
+    "dependencies": {
+      "css": "github:systemjs/plugin-css@^0.1.19",
+      "fg-loadcss": "npm:fg-loadcss@^1.0.0-0",
+      "text": "github:systemjs/plugin-text@^0.0.8"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "clean-css": "npm:clean-css@^3.4.8",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}

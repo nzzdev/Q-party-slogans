@@ -1,6 +1,4 @@
-# NZZ Storytelling Q Polls
-
-Clone this repo to start with a new Q renderer project.
+# NZZ Storytelling Q Opinions
 
 ## Development
 Run `gulp watch` to get a webserver. Point your Browser to the URL given in the console.

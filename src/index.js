@@ -51,6 +51,7 @@ function displayWithContext(item, element) {
 }
 
 function displayWithoutContext(item, element) {
+  element.setAttribute('class','q-opinion-item');
   return render(item, element);
 }
 
@@ -63,7 +64,7 @@ function render(item, element) {
 
 export function display(item, element, rendererConfig, withoutContext = false) {
   return new Promise((resolve, reject) => {
-    console.log(item, element, rendererConfig);
+    // console.log(item, element, rendererConfig);
     try {
       if (!element) throw 'Element is not defined';
 

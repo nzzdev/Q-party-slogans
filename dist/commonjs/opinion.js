@@ -12,8 +12,8 @@ var labelMap = {
   yes: 'Ja',
   no: 'Nein',
   undecided: 'Stimmfreigabe',
-  'parties': 'Parteien',
-  'organisations': 'Organisationen und Verbände'
+  parties: 'Parteien',
+  organisations: 'Organisationen und Verbände'
 };
 
 var Opinion = (function () {
@@ -27,11 +27,21 @@ var Opinion = (function () {
     key: 'render',
     value: function render(data) {
       return ['yes', 'no', 'undecided'].reduce(function (prev, curr) {
-        var label = labelMap[curr];
         var voters = data[curr];
-        return prev + ('\n        <div class="q-opinion__position q-opinion__position--' + curr + '">\n          <div class="s-font-note-s s-font-note-s--strong q-opinion__label--level1">' + label.toUpperCase() + '</div>\n          <div class="q-opinion__parties s-font-text">\n            <div class="s-font-note-s q-opinion__label--level2">' + labelMap.parties + '</div>\n            ' + voters.parties.map(function (p) {
+        var parties = voters.parties.filter(function (p) {
+          return p !== '';
+        });
+        var organisations = voters.organisations.filter(function (o) {
+          return o !== '';
+        });
+        if (curr === 'undecided' && parties.length == 0 && organisations.length == 0) {
+          return prev;
+        }
+        var partyLegend = parties.length > 0 ? '<div class="s-font-note-s q-opinion__label--level2">' + labelMap.parties + '</div>' : '';
+        var orgLegend = organisations.length > 0 ? '<div class="s-font-note-s q-opinion__label--level2">' + labelMap.organisations + '</div>' : '';
+        return prev + ('\n        <div class="q-opinion__position q-opinion__position--' + curr + '">\n          <div class="s-font-note-s s-font-note-s--strong q-opinion__label--level1">' + labelMap[curr].toUpperCase() + '</div>\n          <div class="q-opinion__parties s-font-text">\n            ' + partyLegend + '\n            ' + parties.map(function (p) {
           return '<span class="q-opinion__party">' + p + '</span>';
-        }).join('\n') + '\n          </div>\n          <div class="q-opinion__organisations s-font-text">\n            <div class="s-font-note-s q-opinion__label--level2">' + labelMap.organisations + '</div>\n            ' + voters.organisations.map(function (o) {
+        }).join('\n') + '\n          </div>\n          <div class="q-opinion__organisations s-font-text">\n            ' + orgLegend + '\n            ' + organisations.map(function (o) {
           return '<span class="q-opinion__org">' + o + '</span>';
         }).join('\n') + '\n          </div>\n        </div>\n      ');
       }, '');

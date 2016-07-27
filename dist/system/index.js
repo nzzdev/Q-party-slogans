@@ -43,6 +43,7 @@ System.register(['core-js/es6/object', './rendererConfigDefaults', './opinion', 
   }
 
   function displayWithoutContext(item, element) {
+    element.setAttribute('class', 'q-opinion-item');
     return render(item, element);
   }
 
@@ -57,7 +58,6 @@ System.register(['core-js/es6/object', './rendererConfigDefaults', './opinion', 
     var withoutContext = arguments.length <= 3 || arguments[3] === undefined ? false : arguments[3];
 
     return new Promise(function (resolve, reject) {
-      console.log(item, element, rendererConfig);
       try {
         (function () {
           if (!element) throw 'Element is not defined';

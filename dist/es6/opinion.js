@@ -3,8 +3,8 @@ const labelMap = {
   yes: 'Ja',
   no: 'Nein',
   undecided: 'Stimmfreigabe',
-  'parties': 'Parteien',
-  'organisations': 'Organisationen und Verbände'
+  parties: 'Parteien',
+  organisations: 'Organisationen und Verbände'
 }
 
 export default class Opinion {
@@ -15,18 +15,28 @@ export default class Opinion {
 
   render(data) {
     return ['yes','no','undecided'].reduce((prev,curr)=>{
-      let label = labelMap[curr];
       let voters = data[curr];
+      let parties = voters.parties.filter(p => p !== '');
+      let organisations = voters.organisations.filter(o => o !== '');
+      if (curr === 'undecided' && parties.length == 0 && organisations.length == 0) {
+        return prev;
+      }
+      let partyLegend = parties.length > 0
+        ? `<div class="s-font-note-s q-opinion__label--level2">${labelMap.parties}</div>`
+        : '';
+      let orgLegend = organisations.length > 0
+        ? `<div class="s-font-note-s q-opinion__label--level2">${labelMap.organisations}</div>`
+        : '';
       return prev + `
         <div class="q-opinion__position q-opinion__position--${curr}">
-          <div class="s-font-note-s s-font-note-s--strong q-opinion__label--level1">${label.toUpperCase()}</div>
+          <div class="s-font-note-s s-font-note-s--strong q-opinion__label--level1">${labelMap[curr].toUpperCase()}</div>
           <div class="q-opinion__parties s-font-text">
-            <div class="s-font-note-s q-opinion__label--level2">${labelMap.parties}</div>
-            ${voters.parties.map((p)=>`<span class="q-opinion__party">${p}</span>`).join('\n')}
+            ${partyLegend}
+            ${parties.map((p)=>`<span class="q-opinion__party">${p}</span>`).join('\n')}
           </div>
           <div class="q-opinion__organisations s-font-text">
-            <div class="s-font-note-s q-opinion__label--level2">${labelMap.organisations}</div>
-            ${voters.organisations.map((o)=>`<span class="q-opinion__org">${o}</span>`).join('\n')}
+            ${orgLegend}
+            ${organisations.map((o)=>`<span class="q-opinion__org">${o}</span>`).join('\n')}
           </div>
         </div>
       `;},'')

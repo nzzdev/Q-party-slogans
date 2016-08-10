@@ -34,12 +34,12 @@ define(['exports', 'module'], function (exports, module) {
           if (curr === 'undecided' && parties.length == 0 && organisations.length == 0) {
             return prev;
           }
-          var partyLegend = parties.length > 0 ? '<div class="s-font-note-s q-opinion__label--level2">' + labelMap.parties + '</div>' : '';
-          var orgLegend = organisations.length > 0 ? '<div class="s-font-note-s q-opinion__label--level2">' + labelMap.organisations + '</div>' : '';
-          return prev + ('\n        <div class="q-opinion__position q-opinion__position--' + curr + '">\n          <div class="s-font-note-s s-font-note-s--strong q-opinion__label--level1">' + labelMap[curr].toUpperCase() + '</div>\n          <div class="q-opinion__parties s-font-text">\n            ' + partyLegend + '\n            ' + parties.map(function (p) {
-            return '<span class="q-opinion__party">' + p + '</span>';
-          }).join('\n') + '\n          </div>\n          <div class="q-opinion__organisations s-font-text">\n            ' + orgLegend + '\n            ' + organisations.map(function (o) {
-            return '<span class="q-opinion__org">' + o + '</span>';
+          var partyLegend = parties.length > 0 ? '<div class="s-font-note-s q-party-parole__label--level2">' + labelMap.parties + '</div>' : '';
+          var orgLegend = organisations.length > 0 ? '<div class="s-font-note-s q-party-parole__label--level2">' + labelMap.organisations + '</div>' : '';
+          return prev + ('\n        <div class="q-party-parole__position q-party-parole__position--' + curr + '">\n          <div class="s-font-note-s s-font-note-s--strong q-party-parole__label--level1">' + labelMap[curr].toUpperCase() + '</div>\n          <div class="q-party-parole__parties s-font-text">\n            ' + partyLegend + '\n            ' + parties.map(function (p) {
+            return '<span class="q-party-parole__party">' + p + '</span>';
+          }).join('\n') + '\n          </div>\n          <div class="q-party-parole__organisations s-font-text">\n            ' + orgLegend + '\n            ' + organisations.map(function (o) {
+            return '<span class="q-party-parole__org">' + o + '</span>';
           }).join('\n') + '\n          </div>\n        </div>\n      ');
         }, '');
       }

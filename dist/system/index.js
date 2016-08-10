@@ -32,7 +32,7 @@ System.register(['core-js/es6/object', './rendererConfigDefaults', './opinion', 
 
   function displayWithContext(item, element) {
     var el = document.createElement('section');
-    el.setAttribute('class', 'q-opinion-item');
+    el.setAttribute('class', 'q-party-parole-item');
     el.innerHTML = getContextHtml(item);
     while (element.firstChild) {
       element.removeChild(element.firstChild);
@@ -43,7 +43,7 @@ System.register(['core-js/es6/object', './rendererConfigDefaults', './opinion', 
   }
 
   function displayWithoutContext(item, element) {
-    element.setAttribute('class', 'q-opinion-item');
+    element.setAttribute('class', 'q-party-parole-item');
     return render(item, element);
   }
 

@@ -1,21 +1,21 @@
 {
-  "name": "Q-opinion",
+  "name": "Q-party-parole",
   "version": "0.1.0",
   "description": "Q Opinion",
   "keywords": [
     "storytelling",
     "nzz"
   ],
-  "homepage": "https://github.com/nzzdev/Q-opinion/",
+  "homepage": "https://github.com/nzzdev/Q-party-parole/",
   "bugs": {
-    "url": "https://github.com/nzzdev/Q-opinion/issues"
+    "url": "https://github.com/nzzdev/Q-party-parole/issues"
   },
   "license": "",
   "author": "<balz.rittmeyer@nzz.ch> (NZZ Storytelling)",
   "main": "dist/amd/index.js",
   "repository": {
     "type": "git",
-    "url": "http://github.com/nzzdev/Q-opinion"
+    "url": "http://github.com/nzzdev/Q-party-parole"
   },
   "devDependencies": {
     "autoprefixer": "^6.1.0",

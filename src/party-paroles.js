@@ -38,15 +38,15 @@ export default class PartyParoles {
       }
 
       return prev + `
-        <div class="q-party-parole__position q-party-parole__position--${curr}">
-          <div class="s-font-note-s s-font-note-s--strong q-party-parole__label--level1">${LABEL_MAP[curr].toUpperCase()}</div>
-          <div class="q-party-parole__parties s-font-text">
+        <div class="q-party-parole-position q-party-parole-position--${curr}">
+          <div class="s-font-note-s s-font-note-s--strong q-party-parole-label--level1">${LABEL_MAP[curr].toUpperCase()}</div>
+          <div class="q-party-parole-parties s-font-text">
             ${partyLegend}
-            ${parties.map((p) => `<span class="q-party-parole__party">${p}</span>`).join('\n')}
+            ${parties.map((p) => `<span class="q-party-parole-party">${p}</span>`).join('\n')}
           </div>
-          <div class="q-party-parole__organisations s-font-text">
+          <div class="q-party-parole-organisations s-font-text">
             ${orgLegend}
-            ${organisations.map((o) => `<span class="q-party-parole__org">${o}</span>`).join('\n')}
+            ${organisations.map((o) => `<span class="q-party-parole-org">${o}</span>`).join('\n')}
           </div>
         </div>
       `;}

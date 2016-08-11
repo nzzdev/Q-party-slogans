@@ -1,7 +1,7 @@
 import 'core-js/es6/object';
 
 import rendererConfigDefaults from './rendererConfigDefaults';
-import Opinion from './opinion';
+import PartyParoles from './party-paroles';
 
 import {loadCSS} from 'fg-loadcss';
 import onloadCSS from './resources/onloadCSS';
@@ -57,7 +57,8 @@ function displayWithoutContext(item, element) {
 
 function render(item, element) {
   return new Promise((resolve, reject) => {
-    new Opinion(element,item);
+    let partyParoles = new PartyParoles(item);
+    partyParoles.render(element)
     resolve();
   });
 }

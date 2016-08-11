@@ -1,4 +1,4 @@
-define(['exports', 'core-js/es6/object', './rendererConfigDefaults', './opinion', 'fg-loadcss', './resources/onloadCSS', './resources/SizeObserver'], function (exports, _coreJsEs6Object, _rendererConfigDefaults, _opinion, _fgLoadcss, _resourcesOnloadCSS, _resourcesSizeObserver) {
+define(['exports', 'core-js/es6/object', './rendererConfigDefaults', './party-paroles', 'fg-loadcss', './resources/onloadCSS', './resources/SizeObserver'], function (exports, _coreJsEs6Object, _rendererConfigDefaults, _partyParoles, _fgLoadcss, _resourcesOnloadCSS, _resourcesSizeObserver) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
@@ -10,7 +10,7 @@ define(['exports', 'core-js/es6/object', './rendererConfigDefaults', './opinion'
 
   var _rendererConfigDefaults2 = _interopRequireDefault(_rendererConfigDefaults);
 
-  var _Opinion = _interopRequireDefault(_opinion);
+  var _PartyParoles = _interopRequireDefault(_partyParoles);
 
   var _onloadCSS = _interopRequireDefault(_resourcesOnloadCSS);
 
@@ -38,7 +38,7 @@ define(['exports', 'core-js/es6/object', './rendererConfigDefaults', './opinion'
   function getContextHtml(item) {
     var html = '';
     if (!item.options || !item.options.hideTitle) {
-      html += '<h3 class="q-item__title">' + wrapEmojisInSpan(item.title) + '</h3>';
+      html += '<h3 class="s-q-item__title">' + wrapEmojisInSpan(item.title) + '</h3>';
     }
     html += '<div class="q-item-container"></div>';
 
@@ -64,7 +64,8 @@ define(['exports', 'core-js/es6/object', './rendererConfigDefaults', './opinion'
 
   function render(item, element) {
     return new Promise(function (resolve, reject) {
-      new _Opinion['default'](element, item);
+      var partyParoles = new _PartyParoles['default'](item);
+      partyParoles.render(element);
       resolve();
     });
   }
@@ -97,7 +98,7 @@ define(['exports', 'core-js/es6/object', './rendererConfigDefaults', './opinion'
                 });
               });
 
-              var sophieStylesLoad = (0, _fgLoadcss.loadCSS)('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@0.1.0,sophie-color@~0.1.0[color+background],sophie-input@~0.1.0[range].css');
+              var sophieStylesLoad = (0, _fgLoadcss.loadCSS)('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@0.1.0,sophie-color@~0.1.0[color+background].css');
               var sophieStylesLoadPromise = new Promise(function (resolve, reject) {
                 (0, _onloadCSS['default'])(sophieStylesLoad, function () {
                   resolve();

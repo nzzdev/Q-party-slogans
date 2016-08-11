@@ -1,7 +1,7 @@
 import 'core-js/es6/object';
 
 import rendererConfigDefaults from './rendererConfigDefaults';
-import Opinion from './opinion';
+import PartyParoles from './party-paroles';
 
 import {loadCSS} from 'fg-loadcss';
 import onloadCSS from './resources/onloadCSS';
@@ -31,7 +31,7 @@ function getElementSize(rect) {
 function getContextHtml(item) {
   let html = '';
   if (!item.options || !item.options.hideTitle) {
-    html += `<h3 class="q-item__title">${wrapEmojisInSpan(item.title)}</h3>`;
+    html += `<h3 class="s-q-item__title">${wrapEmojisInSpan(item.title)}</h3>`;
   }
   html += '<div class="q-item-container"></div>';
   //html += '</div></div>';
@@ -57,7 +57,8 @@ function displayWithoutContext(item, element) {
 
 function render(item, element) {
   return new Promise((resolve, reject) => {
-    new Opinion(element,item);
+    let partyParoles = new PartyParoles(item);
+    partyParoles.render(element)
     resolve();
   });
 }
@@ -89,7 +90,7 @@ export function display(item, element, rendererConfig, withoutContext = false) {
 
 
         // additional styles
-        let sophieStylesLoad = loadCSS('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@0.1.0,sophie-color@~0.1.0[color+background],sophie-input@~0.1.0[range].css');
+        let sophieStylesLoad = loadCSS('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@0.1.0,sophie-color@~0.1.0[color+background].css');
         let sophieStylesLoadPromise = new Promise((resolve, reject) => {
           onloadCSS(sophieStylesLoad, () => {
             resolve();

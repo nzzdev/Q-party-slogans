@@ -13,9 +13,9 @@ var _rendererConfigDefaults = require('./rendererConfigDefaults');
 
 var _rendererConfigDefaults2 = _interopRequireDefault(_rendererConfigDefaults);
 
-var _opinion = require('./opinion');
+var _partyParoles = require('./party-paroles');
 
-var _opinion2 = _interopRequireDefault(_opinion);
+var _partyParoles2 = _interopRequireDefault(_partyParoles);
 
 var _fgLoadcss = require('fg-loadcss');
 
@@ -49,7 +49,7 @@ function getElementSize(rect) {
 function getContextHtml(item) {
   var html = '';
   if (!item.options || !item.options.hideTitle) {
-    html += '<h3 class="q-item__title">' + wrapEmojisInSpan(item.title) + '</h3>';
+    html += '<h3 class="s-q-item__title">' + wrapEmojisInSpan(item.title) + '</h3>';
   }
   html += '<div class="q-item-container"></div>';
 
@@ -75,7 +75,8 @@ function displayWithoutContext(item, element) {
 
 function render(item, element) {
   return new Promise(function (resolve, reject) {
-    new _opinion2['default'](element, item);
+    var partyParoles = new _partyParoles2['default'](item);
+    partyParoles.render(element);
     resolve();
   });
 }
@@ -108,7 +109,7 @@ function display(item, element, rendererConfig) {
               });
             });
 
-            var sophieStylesLoad = (0, _fgLoadcss.loadCSS)('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@0.1.0,sophie-color@~0.1.0[color+background],sophie-input@~0.1.0[range].css');
+            var sophieStylesLoad = (0, _fgLoadcss.loadCSS)('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@0.1.0,sophie-color@~0.1.0[color+background].css');
             var sophieStylesLoadPromise = new Promise(function (resolve, reject) {
               (0, _resourcesOnloadCSS2['default'])(sophieStylesLoad, function () {
                 resolve();

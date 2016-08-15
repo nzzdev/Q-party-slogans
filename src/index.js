@@ -28,20 +28,19 @@ function getElementSize(rect) {
   return size;
 }
 
-function getContextHtml(item) {
+function getContextHtml(item, hideTitle) {
   let html = '';
-  if (!item.options || !item.options.hideTitle) {
+  if (!hideTitle) {
     html += `<h3 class="s-q-item__title">${wrapEmojisInSpan(item.title)}</h3>`;
   }
   html += '<div class="q-item-container"></div>';
-  //html += '</div></div>';
   return html;
 }
 
-function displayWithContext(item, element) {
+function displayWithContext(item, element, drawSize, hideTitle) {
   let el = document.createElement('section');
   el.setAttribute('class','q-party-parole-item');                     // <-- replace this classname probably
-  el.innerHTML = getContextHtml(item);
+  el.innerHTML = getContextHtml(item, hideTitle);
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
@@ -64,6 +63,9 @@ function render(item, element) {
 }
 
 export function display(item, element, rendererConfig, withoutContext = false) {
+
+  let hideTitle = rendererConfig.hideTitle === true;
+
   return new Promise((resolve, reject) => {
     // console.log(item, element, rendererConfig);
     try {
@@ -90,7 +92,7 @@ export function display(item, element, rendererConfig, withoutContext = false) {
 
 
         // additional styles
-        let sophieStylesLoad = loadCSS('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@0.1.0,sophie-color@~0.1.0[color+background].css');
+        let sophieStylesLoad = loadCSS('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@0.1.0,sophie-color@~0.1.0[color+background],sophie-viz-color@^1.0.0[diverging-6].css');
         let sophieStylesLoadPromise = new Promise((resolve, reject) => {
           onloadCSS(sophieStylesLoad, () => {
             resolve();
@@ -115,7 +117,7 @@ export function display(item, element, rendererConfig, withoutContext = false) {
           if (withoutContext) {
             graphic = displayWithoutContext(item, element, drawSize);
           } else {
-            graphic = displayWithContext(item, element, drawSize);
+            graphic = displayWithContext(item, element, drawSize, hideTitle);
           }
         } catch (e) {
           reject(e);

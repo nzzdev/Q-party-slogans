@@ -44,21 +44,21 @@ export default class PartySlogans {
       }
 
       // get legends
-      let partyLegend = parties.length > 0 ? `<div class="s-font-note-s q-party-slogan-label--level2">Parteien</div>` : '';
-      let orgLegend = organisations.length > 0 ? `<div class="s-font-note-s q-party-slogan-label--level2">Organisationen</div>` : '';
+      let partyLegend = parties.length > 0 ? `<div class="s-font-note-s q-party-slogans-label--level2">Parteien</div>` : '';
+      let orgLegend = organisations.length > 0 ? `<div class="s-font-note-s q-party-slogans-label--level2">Organisationen</div>` : '';
 
       let voiceInnerSpanClass = drawSize === 'large' ? 's-font-text' : 's-font-text-s';
       
       return `
-        <div class="q-party-slogan-position">
-          <div class="s-font-note-s s-font-note-s--strong ${position.labelColorClass} q-party-slogan-label--level1">${position.label.toUpperCase()}</div>
-          <div class="q-party-slogan-voices">
+        <div class="q-party-slogans-position">
+          <div class="s-font-note-s s-font-note-s--strong ${position.labelColorClass} q-party-slogans-label--level1">${position.label.toUpperCase()}</div>
+          <div class="q-party-slogans-voices">
             ${partyLegend}
-            ${parties.map((p) => `<span class="${position.voiceColorClass} q-party-slogan-voice"><span class="${voiceInnerSpanClass}">${p}</span></span>`).join('\n')}
+            ${parties.map((p) => `<span class="${position.voiceColorClass} q-party-slogans-voice"><span class="${voiceInnerSpanClass}">${p}</span></span>`).join('\n')}
           </div>
-          <div class="q-party-slogan-voices">
+          <div class="q-party-slogans-voices">
             ${orgLegend}
-            ${organisations.map((o) => `<span class="${position.voiceColorClass} q-party-slogan-voice"><span class="${voiceInnerSpanClass}">${o}</span></span>`).join('\n')}
+            ${organisations.map((o) => `<span class="${position.voiceColorClass} q-party-slogans-voice"><span class="${voiceInnerSpanClass}">${o}</span></span>`).join('\n')}
           </div>
         </div>
       `;

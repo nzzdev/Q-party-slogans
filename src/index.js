@@ -39,7 +39,7 @@ function getContextHtml(item, hideTitle) {
 
 function displayWithContext(item, element, drawSize, hideTitle) {
   let el = document.createElement('section');
-  el.setAttribute('class','q-party-slogan-item');
+  el.setAttribute('class','q-party-slogans-item');
   el.innerHTML = getContextHtml(item, hideTitle);
   while (element.firstChild) {
     element.removeChild(element.firstChild);
@@ -50,7 +50,7 @@ function displayWithContext(item, element, drawSize, hideTitle) {
 }
 
 function displayWithoutContext(item, element, drawSize) {
-  element.setAttribute('class','q-party-slogan-item');
+  element.setAttribute('class','q-party-slogans-item');
   return render(item, element, drawSize);
 }
 

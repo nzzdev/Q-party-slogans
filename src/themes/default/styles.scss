@@ -1,7 +1,7 @@
 
 @import "storytelling-ui-kit/clearfix";
 
-.q-party-slogan-item {
+.q-party-slogans-item {
 
   padding: 20px 0px;
   @clearfix();
@@ -12,12 +12,12 @@
   }
 }
 
-.q-party-slogan-position {
+.q-party-slogans-position {
   margin: 0px 0px 12px;
 }
 
 
-.q-party-slogan-label {
+.q-party-slogans-label {
 
   &--level1 {
     text-transform: uppercase;
@@ -32,7 +32,7 @@
 
 }
 
-.q-party-slogan-voice {
+.q-party-slogans-voice {
   border-radius: 3px;
   display: inline-block;
   padding: 0px 2px;

@@ -15,8 +15,8 @@ const POSITIONS = [
   {
     name: 'undecided',
     label: 'Stimmfreigabe',
-    labelColorClass: 's-color-font-gray-10',
-    voiceColorClass: 's-color-font-gray-4'
+    labelColorClass: 's-color-gray-10',
+    voiceColorClass: 's-color-gray-4'
   }
 ];
 

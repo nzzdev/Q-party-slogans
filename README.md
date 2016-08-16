@@ -1,4 +1,4 @@
-# NZZ Storytelling Q Opinions
+# NZZ Storytelling Q Party Slogans
 
 ## Development
 Run `gulp watch` to get a webserver. Point your Browser to the URL given in the console.

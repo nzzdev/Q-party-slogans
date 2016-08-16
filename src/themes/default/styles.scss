@@ -1,7 +1,7 @@
 
 @import "storytelling-ui-kit/clearfix";
 
-.q-party-parole-item {
+.q-party-slogan-item {
 
   padding: 20px 0px;
   @clearfix();
@@ -12,29 +12,29 @@
   }
 }
 
-.q-party-parole-position {
+.q-party-slogan-position {
   margin: 0px 0px 12px;
 }
 
 
-.q-party-parole-label {
+.q-party-slogan-label {
 
   &--level1 {
     text-transform: uppercase;
     border: 0px solid currentColor;
     border-bottom-width: 1px;
-    margin:18px 0px 3px;
+    margin: 18px 0px 3px;
   }
 
   &--level2 {
-    margin:6px 0px 3px;
+    margin: 6px 0px 3px;
   }
 
 }
 
-.q-party-parole-voice {
+.q-party-slogan-voice {
   border-radius: 3px;
-  display:inline-block;
+  display: inline-block;
   padding: 0px 2px;
   background-color: currentColor;
 }

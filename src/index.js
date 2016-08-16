@@ -1,7 +1,7 @@
 import 'core-js/es6/object';
 
 import rendererConfigDefaults from './rendererConfigDefaults';
-import PartyParoles from './party-paroles';
+import PartySlogans from './resources/PartySlogans';
 
 import {loadCSS} from 'fg-loadcss';
 import onloadCSS from './resources/onloadCSS';
@@ -39,25 +39,25 @@ function getContextHtml(item, hideTitle) {
 
 function displayWithContext(item, element, drawSize, hideTitle) {
   let el = document.createElement('section');
-  el.setAttribute('class','q-party-parole-item');                     // <-- replace this classname probably
+  el.setAttribute('class','q-party-slogan-item');
   el.innerHTML = getContextHtml(item, hideTitle);
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
   element.appendChild(el);
 
-  return render(item, el.querySelector('.q-item-container'));
+  return render(item, el.querySelector('.q-item-container'), drawSize);
 }
 
-function displayWithoutContext(item, element) {
-  element.setAttribute('class','q-party-parole-item');
-  return render(item, element);
+function displayWithoutContext(item, element, drawSize) {
+  element.setAttribute('class','q-party-slogan-item');
+  return render(item, element, drawSize);
 }
 
-function render(item, element) {
+function render(item, element, drawSize) {
   return new Promise((resolve, reject) => {
-    let partyParoles = new PartyParoles(item);
-    partyParoles.render(element)
+    let partySlogans = new PartySlogans(item);
+    partySlogans.render(element, drawSize)
     resolve();
   });
 }
@@ -67,7 +67,7 @@ export function display(item, element, rendererConfig, withoutContext = false) {
   let hideTitle = rendererConfig.hideTitle === true;
 
   return new Promise((resolve, reject) => {
-    // console.log(item, element, rendererConfig);
+
     try {
       if (!element) throw 'Element is not defined';
 
@@ -92,7 +92,7 @@ export function display(item, element, rendererConfig, withoutContext = false) {
 
 
         // additional styles
-        let sophieStylesLoad = loadCSS('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@0.1.0,sophie-color@~0.1.0[color+background],sophie-viz-color@^1.0.0[diverging-6].css');
+        let sophieStylesLoad = loadCSS('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@0.1.0,sophie-color@~0.1.0[color],sophie-viz-color@^1.0.0[diverging-6].css');
         let sophieStylesLoadPromise = new Promise((resolve, reject) => {
           onloadCSS(sophieStylesLoad, () => {
             resolve();
@@ -108,8 +108,6 @@ export function display(item, element, rendererConfig, withoutContext = false) {
         rendererPromises.push(sophieStylesLoadPromise);
       }
 
-      // use this if your rendering is depending on container size
-
       sizeObserver.onResize((rect) => {
         let drawSize = getElementSize(rect);
 
@@ -124,23 +122,11 @@ export function display(item, element, rendererConfig, withoutContext = false) {
         }
 
         resolve({
-              graphic: graphic,
-              promises: rendererPromises
-            });
+          graphic: graphic,
+          promises: rendererPromises
+        });
 
       }, element, true);
-
-      // use this if container size doesn't influence your rendering
-      // render(item,element)
-      //   .then(() => {
-      //     resolve({
-      //         graphic: graphic,
-      //         promises: rendererPromises
-      //       });
-      //   })
-      //   .catch((e) => {
-      //     reject(e);
-      //   })
 
     } catch (e) {
       reject(e);

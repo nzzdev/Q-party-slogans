@@ -7,16 +7,16 @@ const POSITIONS = [
     voiceColorClass: 's-viz-color-diverging-6-4'
   },
   {
-    name: 'undecided',
-    label: 'Stimmfreigabe',
-    labelColorClass: 's-color-font-gray-10',
-    voiceColorClass: 's-color-font-gray-4'
-  },
-  {
     name: 'no',
     label: 'Nein',
     labelColorClass: 's-viz-color-diverging-6-1',
     voiceColorClass: 's-viz-color-diverging-6-3'
+  },
+  {
+    name: 'undecided',
+    label: 'Stimmfreigabe',
+    labelColorClass: 's-color-font-gray-10',
+    voiceColorClass: 's-color-font-gray-4'
   }
 ];
 
@@ -48,7 +48,7 @@ export default class PartySlogans {
       let orgLegend = organisations.length > 0 ? `<div class="s-font-note-s q-party-slogans-label--level2">Organisationen</div>` : '';
 
       let voiceInnerSpanClass = drawSize === 'large' ? 's-font-text' : 's-font-text-s';
-      
+
       return `
         <div class="q-party-slogans-position">
           <div class="s-font-note-s s-font-note-s--strong ${position.labelColorClass} q-party-slogans-label--level1">${position.label.toUpperCase()}</div>

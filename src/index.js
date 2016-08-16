@@ -92,7 +92,7 @@ export function display(item, element, rendererConfig, withoutContext = false) {
 
 
         // additional styles
-        let sophieStylesLoad = loadCSS('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@0.1.0,sophie-color@~0.1.0[color],sophie-viz-color@^1.0.0[diverging-6].css');
+        let sophieStylesLoad = loadCSS('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@^0.1.0,sophie-color@~1.0.0,sophie-viz-color@^1.0.0[diverging-6].css');
         let sophieStylesLoadPromise = new Promise((resolve, reject) => {
           onloadCSS(sophieStylesLoad, () => {
             resolve();
@@ -108,7 +108,14 @@ export function display(item, element, rendererConfig, withoutContext = false) {
         rendererPromises.push(sophieStylesLoadPromise);
       }
 
+      let lastWidth;
+
       sizeObserver.onResize((rect) => {
+        if (rect.width && lastWidth === rect.width) {
+          return;
+        }
+        lastWidth = rect.width;
+        
         let drawSize = getElementSize(rect);
 
         try {

@@ -30,7 +30,7 @@ var keycdnOptions = {
   method : 'del'
 };
 
-var slug          = 'Q-renderers/opinion';
+var slug          = 'Q-renderers/party-slogans';
 var deployTargets = [];
 
 // deploy target is different according to branch / tags

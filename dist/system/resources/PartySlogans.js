@@ -46,6 +46,8 @@ System.register([], function (_export) {
 
             var drawSize = arguments.length <= 0 || arguments[0] === undefined ? 'large' : arguments[0];
 
+            var voiceInnerSpanClass = drawSize === 'large' ? 's-font-text' : 's-font-text-s';
+
             return POSITIONS.map(function (position) {
               var voters = _this.item.data[position.name];
               var parties = voters.parties.filter(function (p) {
@@ -62,9 +64,7 @@ System.register([], function (_export) {
               var partyLegend = parties.length > 0 ? '<div class="s-font-note-s q-party-slogans-label--level2">Parteien</div>' : '';
               var orgLegend = organisations.length > 0 ? '<div class="s-font-note-s q-party-slogans-label--level2">Organisationen</div>' : '';
 
-              var voiceInnerSpanClass = drawSize === 'large' ? 's-font-text' : 's-font-text-s';
-
-              return '\n        <div class="q-party-slogans-position">\n          <div class="s-font-note-s s-font-note-s--strong ' + position.labelColorClass + ' q-party-slogans-label--level1">' + position.label.toUpperCase() + '</div>\n          <div class="q-party-slogans-voices">\n            ' + partyLegend + '\n            <div>\n            ' + parties.map(function (p) {
+              return '\n        <div class="q-party-slogans-position ' + (drawSize === 'large' ? '' : 'q-party-slogans-position--small') + '">\n          <div class="s-font-note-s s-font-note-s--strong ' + position.labelColorClass + ' q-party-slogans-label--level1">' + position.label.toUpperCase() + '</div>\n          <div class="q-party-slogans-voices">\n            ' + partyLegend + '\n            <div>\n            ' + parties.map(function (p) {
                 return '<span class="' + position.voiceColorClass + ' q-party-slogans-voice"><span class="' + voiceInnerSpanClass + '">' + p + '</span></span>';
               }).join('') + '\n            </div>\n          </div>\n          <div class="q-party-slogans-voices">\n            ' + orgLegend + '\n            <div>\n            ' + organisations.map(function (o) {
                 return '<span class="' + position.voiceColorClass + ' q-party-slogans-voice"><span class="' + voiceInnerSpanClass + '">' + o + '</span></span>';

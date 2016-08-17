@@ -9,4 +9,4 @@ Run `gulp watch` to get a webserver. Point your Browser to the URL given in the 
   * `travis encrypt KEYCDN_API_KEY= --add`
   * `travis encrypt AWS_SECRET_ACCESS_KEY= --add`
   * `travis encrypt AWS_ACCESS_KEY_ID= --add`
-  * `travis encrypt "nzzstorytelling:token" --add notifications.slack`
+  * `travis encrypt "nzz:token" --add notifications.slack`

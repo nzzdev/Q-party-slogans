@@ -18,7 +18,7 @@ var builder = new Builder('','config.js');
 
 builder.config({
   paths: {
-    '/*': 'dist/system/*',
+    'party-slogans/*': 'dist/system/*',
     'github:*': 'jspm_packages/github/*',
     'npm:*': 'jspm_packages/npm/*'
   },
@@ -31,7 +31,7 @@ gulp.task('copy-theme-for-deployment', function() {
 
 gulp.task('bundle-js', function(callback) {
   builder
-    .bundle('/index', bundleName + '.js', { normalize: true, minify: true })
+    .bundle('party-slogans/index', bundleName + '.js', { normalize: true, minify: true })
     .then(function() {
       callback();
     })

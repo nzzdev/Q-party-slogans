@@ -24,6 +24,7 @@
   padding: 3px;
   margin: 2px;
   line-height: 1.85;
-  background-color: currentColor; }
+  background-color: currentColor;
+  word-wrap: break-word; }
   .q-party-slogans-voice:first-child {
     margin-left: 0px; }

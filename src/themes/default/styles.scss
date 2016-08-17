@@ -34,7 +34,13 @@
 
 .q-party-slogans-voice {
   border-radius: 3px;
-  display: inline-block;
-  padding: 0px 2px;
+  padding: 3px;
+  margin: 2px;
+  line-height: 1.8;
   background-color: currentColor;
+
+  &:first-child {
+    margin-left: 0px;
+  }
+
 }

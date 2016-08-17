@@ -54,11 +54,15 @@ export default class PartySlogans {
           <div class="s-font-note-s s-font-note-s--strong ${position.labelColorClass} q-party-slogans-label--level1">${position.label.toUpperCase()}</div>
           <div class="q-party-slogans-voices">
             ${partyLegend}
-            ${parties.map((p) => `<span class="${position.voiceColorClass} q-party-slogans-voice"><span class="${voiceInnerSpanClass}">${p}</span></span>`).join('\n')}
+            <div>
+            ${parties.map((p) => `<span class="${position.voiceColorClass} q-party-slogans-voice"><span class="${voiceInnerSpanClass}">${p}</span></span>`).join('')}
+            </div>
           </div>
           <div class="q-party-slogans-voices">
             ${orgLegend}
-            ${organisations.map((o) => `<span class="${position.voiceColorClass} q-party-slogans-voice"><span class="${voiceInnerSpanClass}">${o}</span></span>`).join('\n')}
+            <div>
+            ${organisations.map((o) => `<span class="${position.voiceColorClass} q-party-slogans-voice"><span class="${voiceInnerSpanClass}">${o}</span></span>`).join('')}
+            </div>
           </div>
         </div>
       `;

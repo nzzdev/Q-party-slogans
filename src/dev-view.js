@@ -15,7 +15,7 @@ var dummyData = [
     "data": {
       "yes": {
         parties: ['party1', 'party2'],
-        organisations: ['org1', 'org2']
+        organisations: ['org1', 'org2', 'Organisationen können manchmal wirklich wirklich wirklich lange Namen enthalten', 'Und dazu noch mehrere', 'Auch-möglich-ist-dass-es-einezigerlangerstriiiiingist']
       },
       "no": {
         parties: ['party1', 'party2'],

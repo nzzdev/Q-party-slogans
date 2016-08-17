@@ -62,11 +62,11 @@ var PartySlogans = (function () {
 
         var voiceInnerSpanClass = drawSize === 'large' ? 's-font-text' : 's-font-text-s';
 
-        return '\n        <div class="q-party-slogans-position">\n          <div class="s-font-note-s s-font-note-s--strong ' + position.labelColorClass + ' q-party-slogans-label--level1">' + position.label.toUpperCase() + '</div>\n          <div class="q-party-slogans-voices">\n            ' + partyLegend + '\n            ' + parties.map(function (p) {
+        return '\n        <div class="q-party-slogans-position">\n          <div class="s-font-note-s s-font-note-s--strong ' + position.labelColorClass + ' q-party-slogans-label--level1">' + position.label.toUpperCase() + '</div>\n          <div class="q-party-slogans-voices">\n            ' + partyLegend + '\n            <div>\n            ' + parties.map(function (p) {
           return '<span class="' + position.voiceColorClass + ' q-party-slogans-voice"><span class="' + voiceInnerSpanClass + '">' + p + '</span></span>';
-        }).join('\n') + '\n          </div>\n          <div class="q-party-slogans-voices">\n            ' + orgLegend + '\n            ' + organisations.map(function (o) {
+        }).join('') + '\n            </div>\n          </div>\n          <div class="q-party-slogans-voices">\n            ' + orgLegend + '\n            <div>\n            ' + organisations.map(function (o) {
           return '<span class="' + position.voiceColorClass + ' q-party-slogans-voice"><span class="' + voiceInnerSpanClass + '">' + o + '</span></span>';
-        }).join('\n') + '\n          </div>\n        </div>\n      ';
+        }).join('') + '\n            </div>\n          </div>\n        </div>\n      ';
       }).join('');
     }
   }]);

@@ -34,7 +34,6 @@ var PartyParoles = (function () {
       var _this = this;
 
       return ['yes', 'no', 'undecided'].reduce(function (prev, curr) {
-
         var voters = _this.item.data[curr];
         var parties = voters.parties.filter(function (p) {
           return p !== '';
@@ -42,19 +41,13 @@ var PartyParoles = (function () {
         var organisations = voters.organisations.filter(function (o) {
           return o !== '';
         });
+
         if (curr === 'undecided' && parties.length === 0 && organisations.length === 0) {
           return prev;
         }
 
-        var partyLegend = '';
-        if (parties.length > 0) {
-          partyLegend = '<div class="s-font-note-s q-party-parole__label--level2">' + LABEL_MAP.parties + '</div>';
-        }
-
-        var orgLegend = '';
-        if (organisations.length > 0) {
-          orgLegend = '<div class="s-font-note-s q-party-parole__label--level2">' + LABEL_MAP.organisations + '</div>';
-        }
+        var partyLegend = parties.length > 0 ? '<div class="s-font-note-s q-party-parole__label--level2">' + LABEL_MAP.parties + '</div>' : '';
+        var orgLegend = organisations.length > 0 ? '<div class="s-font-note-s q-party-parole__label--level2">' + LABEL_MAP.organisations + '</div>' : '';
 
         return prev + ('\n        <div class="q-party-parole-position q-party-parole-position--' + curr + '">\n          <div class="s-font-note-s s-font-note-s--strong q-party-parole-label--level1">' + LABEL_MAP[curr].toUpperCase() + '</div>\n          <div class="q-party-parole-parties s-font-text">\n            ' + partyLegend + '\n            ' + parties.map(function (p) {
           return '<span class="q-party-parole-party">' + p + '</span>';

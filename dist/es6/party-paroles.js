@@ -20,22 +20,19 @@ export default class PartyParoles {
   getHtml() {
     return ['yes', 'no', 'undecided'].reduce((prev, curr) => {
 
+      // get parties and organisations
       let voters = this.item.data[curr];
       let parties = voters.parties.filter(p => p !== '');
       let organisations = voters.organisations.filter(o => o !== '');
+
+      // do not render undecided voters if there's nothing to show
       if (curr === 'undecided' && parties.length === 0 && organisations.length === 0) {
         return prev;
       }
 
-      let partyLegend = '';
-      if (parties.length > 0) {
-        partyLegend = `<div class="s-font-note-s q-party-parole__label--level2">${LABEL_MAP.parties}</div>`
-      }
-
-      let orgLegend = '';
-      if (organisations.length > 0) {
-        orgLegend = `<div class="s-font-note-s q-party-parole__label--level2">${LABEL_MAP.organisations}</div>`
-      }
+      // get legends
+      let partyLegend = parties.length > 0 ? `<div class="s-font-note-s q-party-parole__label--level2">${LABEL_MAP.parties}</div>` : '';
+      let orgLegend = organisations.length > 0 ? `<div class="s-font-note-s q-party-parole__label--level2">${LABEL_MAP.organisations}</div>` : '';
 
       return prev + `
         <div class="q-party-parole-position q-party-parole-position--${curr}">

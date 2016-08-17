@@ -1,4 +1,4 @@
-define(['exports', 'core-js/es6/object', './rendererConfigDefaults', './party-paroles', 'fg-loadcss', './resources/onloadCSS', './resources/SizeObserver'], function (exports, _coreJsEs6Object, _rendererConfigDefaults, _partyParoles, _fgLoadcss, _resourcesOnloadCSS, _resourcesSizeObserver) {
+define(['exports', 'core-js/es6/object', './rendererConfigDefaults', './resources/PartySlogans', 'fg-loadcss', './resources/onloadCSS', './resources/SizeObserver'], function (exports, _coreJsEs6Object, _rendererConfigDefaults, _resourcesPartySlogans, _fgLoadcss, _resourcesOnloadCSS, _resourcesSizeObserver) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
@@ -10,7 +10,7 @@ define(['exports', 'core-js/es6/object', './rendererConfigDefaults', './party-pa
 
   var _rendererConfigDefaults2 = _interopRequireDefault(_rendererConfigDefaults);
 
-  var _PartyParoles = _interopRequireDefault(_partyParoles);
+  var _PartySlogans = _interopRequireDefault(_resourcesPartySlogans);
 
   var _onloadCSS = _interopRequireDefault(_resourcesOnloadCSS);
 
@@ -35,37 +35,36 @@ define(['exports', 'core-js/es6/object', './rendererConfigDefaults', './party-pa
     return size;
   }
 
-  function getContextHtml(item) {
+  function getContextHtml(item, hideTitle) {
     var html = '';
-    if (!item.options || !item.options.hideTitle) {
+    if (!hideTitle) {
       html += '<h3 class="s-q-item__title">' + wrapEmojisInSpan(item.title) + '</h3>';
     }
     html += '<div class="q-item-container"></div>';
-
     return html;
   }
 
-  function displayWithContext(item, element) {
+  function displayWithContext(item, element, drawSize, hideTitle) {
     var el = document.createElement('section');
-    el.setAttribute('class', 'q-party-parole-item');
-    el.innerHTML = getContextHtml(item);
+    el.setAttribute('class', 'q-party-slogans-item');
+    el.innerHTML = getContextHtml(item, hideTitle);
     while (element.firstChild) {
       element.removeChild(element.firstChild);
     }
     element.appendChild(el);
 
-    return render(item, el.querySelector('.q-item-container'));
+    return render(item, el.querySelector('.q-item-container'), drawSize);
   }
 
-  function displayWithoutContext(item, element) {
-    element.setAttribute('class', 'q-party-parole-item');
-    return render(item, element);
+  function displayWithoutContext(item, element, drawSize) {
+    element.setAttribute('class', 'q-party-slogans-item');
+    return render(item, element, drawSize);
   }
 
-  function render(item, element) {
+  function render(item, element, drawSize) {
     return new Promise(function (resolve, reject) {
-      var partyParoles = new _PartyParoles['default'](item);
-      partyParoles.render(element);
+      var partySlogans = new _PartySlogans['default'](item);
+      partySlogans.render(element, drawSize);
       resolve();
     });
   }
@@ -73,7 +72,10 @@ define(['exports', 'core-js/es6/object', './rendererConfigDefaults', './party-pa
   function display(item, element, rendererConfig) {
     var withoutContext = arguments.length <= 3 || arguments[3] === undefined ? false : arguments[3];
 
+    var hideTitle = rendererConfig.hideTitle === true;
+
     return new Promise(function (resolve, reject) {
+
       try {
         (function () {
           if (!element) throw 'Element is not defined';
@@ -98,7 +100,7 @@ define(['exports', 'core-js/es6/object', './rendererConfigDefaults', './party-pa
                 });
               });
 
-              var sophieStylesLoad = (0, _fgLoadcss.loadCSS)('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@0.1.0,sophie-color@~0.1.0[color+background].css');
+              var sophieStylesLoad = (0, _fgLoadcss.loadCSS)('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@^0.1.0,sophie-color@~1.0.0,sophie-viz-color@^1.0.0[diverging-6].css');
               var sophieStylesLoadPromise = new Promise(function (resolve, reject) {
                 (0, _onloadCSS['default'])(sophieStylesLoad, function () {
                   resolve();
@@ -114,14 +116,21 @@ define(['exports', 'core-js/es6/object', './rendererConfigDefaults', './party-pa
             })();
           }
 
+          var lastWidth = undefined;
+
           sizeObserver.onResize(function (rect) {
+            if (rect.width && lastWidth === rect.width) {
+              return;
+            }
+            lastWidth = rect.width;
+
             var drawSize = getElementSize(rect);
 
             try {
               if (withoutContext) {
                 graphic = displayWithoutContext(item, element, drawSize);
               } else {
-                graphic = displayWithContext(item, element, drawSize);
+                graphic = displayWithContext(item, element, drawSize, hideTitle);
               }
             } catch (e) {
               reject(e);

@@ -1,21 +1,21 @@
 {
-  "name": "Q-party-parole",
+  "name": "Q-party-slogans",
   "version": "0.1.0",
-  "description": "Q Opinion",
+  "description": "Q Party Slogans",
   "keywords": [
     "storytelling",
     "nzz"
   ],
-  "homepage": "https://github.com/nzzdev/Q-party-parole/",
+  "homepage": "https://github.com/nzzdev/Q-party-slogans/",
   "bugs": {
-    "url": "https://github.com/nzzdev/Q-party-parole/issues"
+    "url": "https://github.com/nzzdev/Q-party-slogans/issues"
   },
   "license": "",
   "author": "<balz.rittmeyer@nzz.ch> (NZZ Storytelling)",
   "main": "dist/amd/index.js",
   "repository": {
     "type": "git",
-    "url": "http://github.com/nzzdev/Q-party-parole"
+    "url": "http://github.com/nzzdev/Q-party-slogans"
   },
   "devDependencies": {
     "autoprefixer": "^6.1.0",

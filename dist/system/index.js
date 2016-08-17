@@ -1,7 +1,7 @@
-System.register(['core-js/es6/object', './rendererConfigDefaults', './party-paroles', 'fg-loadcss', './resources/onloadCSS', './resources/SizeObserver'], function (_export) {
+System.register(['core-js/es6/object', './rendererConfigDefaults', './resources/PartySlogans', 'fg-loadcss', './resources/onloadCSS', './resources/SizeObserver'], function (_export) {
   'use strict';
 
-  var rendererConfigDefaults, PartyParoles, loadCSS, onloadCSS, SizeObserver, sizeObserver, stylesLoaded;
+  var rendererConfigDefaults, PartySlogans, loadCSS, onloadCSS, SizeObserver, sizeObserver, stylesLoaded;
 
   _export('display', display);
 
@@ -20,37 +20,36 @@ System.register(['core-js/es6/object', './rendererConfigDefaults', './party-paro
     return size;
   }
 
-  function getContextHtml(item) {
+  function getContextHtml(item, hideTitle) {
     var html = '';
-    if (!item.options || !item.options.hideTitle) {
+    if (!hideTitle) {
       html += '<h3 class="s-q-item__title">' + wrapEmojisInSpan(item.title) + '</h3>';
     }
     html += '<div class="q-item-container"></div>';
-
     return html;
   }
 
-  function displayWithContext(item, element) {
+  function displayWithContext(item, element, drawSize, hideTitle) {
     var el = document.createElement('section');
-    el.setAttribute('class', 'q-party-parole-item');
-    el.innerHTML = getContextHtml(item);
+    el.setAttribute('class', 'q-party-slogans-item');
+    el.innerHTML = getContextHtml(item, hideTitle);
     while (element.firstChild) {
       element.removeChild(element.firstChild);
     }
     element.appendChild(el);
 
-    return render(item, el.querySelector('.q-item-container'));
+    return render(item, el.querySelector('.q-item-container'), drawSize);
   }
 
-  function displayWithoutContext(item, element) {
-    element.setAttribute('class', 'q-party-parole-item');
-    return render(item, element);
+  function displayWithoutContext(item, element, drawSize) {
+    element.setAttribute('class', 'q-party-slogans-item');
+    return render(item, element, drawSize);
   }
 
-  function render(item, element) {
+  function render(item, element, drawSize) {
     return new Promise(function (resolve, reject) {
-      var partyParoles = new PartyParoles(item);
-      partyParoles.render(element);
+      var partySlogans = new PartySlogans(item);
+      partySlogans.render(element, drawSize);
       resolve();
     });
   }
@@ -58,7 +57,10 @@ System.register(['core-js/es6/object', './rendererConfigDefaults', './party-paro
   function display(item, element, rendererConfig) {
     var withoutContext = arguments.length <= 3 || arguments[3] === undefined ? false : arguments[3];
 
+    var hideTitle = rendererConfig.hideTitle === true;
+
     return new Promise(function (resolve, reject) {
+
       try {
         (function () {
           if (!element) throw 'Element is not defined';
@@ -83,7 +85,7 @@ System.register(['core-js/es6/object', './rendererConfigDefaults', './party-paro
                 });
               });
 
-              var sophieStylesLoad = loadCSS('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@0.1.0,sophie-color@~0.1.0[color+background].css');
+              var sophieStylesLoad = loadCSS('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@^0.1.0,sophie-color@~1.0.0,sophie-viz-color@^1.0.0[diverging-6].css');
               var sophieStylesLoadPromise = new Promise(function (resolve, reject) {
                 onloadCSS(sophieStylesLoad, function () {
                   resolve();
@@ -99,14 +101,21 @@ System.register(['core-js/es6/object', './rendererConfigDefaults', './party-paro
             })();
           }
 
+          var lastWidth = undefined;
+
           sizeObserver.onResize(function (rect) {
+            if (rect.width && lastWidth === rect.width) {
+              return;
+            }
+            lastWidth = rect.width;
+
             var drawSize = getElementSize(rect);
 
             try {
               if (withoutContext) {
                 graphic = displayWithoutContext(item, element, drawSize);
               } else {
-                graphic = displayWithContext(item, element, drawSize);
+                graphic = displayWithContext(item, element, drawSize, hideTitle);
               }
             } catch (e) {
               reject(e);
@@ -127,8 +136,8 @@ System.register(['core-js/es6/object', './rendererConfigDefaults', './party-paro
   return {
     setters: [function (_coreJsEs6Object) {}, function (_rendererConfigDefaults) {
       rendererConfigDefaults = _rendererConfigDefaults['default'];
-    }, function (_partyParoles) {
-      PartyParoles = _partyParoles['default'];
+    }, function (_resourcesPartySlogans) {
+      PartySlogans = _resourcesPartySlogans['default'];
     }, function (_fgLoadcss) {
       loadCSS = _fgLoadcss.loadCSS;
     }, function (_resourcesOnloadCSS) {

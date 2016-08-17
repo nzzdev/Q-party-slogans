@@ -1,47 +1,24 @@
-.q-party-parole-item {
-  margin: 20px 0px;
+.q-party-slogans-item {
+  padding: 20px 0px;
   @clearfix ();
   box-sizing: border-box; }
-  .q-party-parole-item * {
+  .q-party-slogans-item * {
     box-sizing: inherit; }
 
-.q-party-parole-label--level1 {
+.q-party-slogans-position {
+  margin: 0px 0px 12px; }
+
+.q-party-slogans-label--level1 {
   text-transform: uppercase;
-  border-style: solid;
-  border-width: 0px 0px 1px 0px;
-  margin-top: 18px; }
+  border: 0px solid currentColor;
+  border-bottom-width: 1px;
+  margin: 18px 0px 3px; }
 
-.q-party-parole-label--level2 {
-  margin-top: 10px; }
+.q-party-slogans-label--level2 {
+  margin: 6px 0px 3px; }
 
-.q-party-parole-parties .s-font-note-s,
-.q-party-parole-organisations .s-font-note-s {
-  color: #0a0a0a;
-  margin: 7px 0px 3px; }
-
-.q-party-parole-party,
-.q-party-parole-org {
+.q-party-slogans-voice {
   border-radius: 3px;
   display: inline-block;
-  padding: 0px 2px; }
-
-.q-party-parole-position--yes .s-font-note-s {
-  color: #0084c7;
-  border-color: #c0d4ed; }
-
-.q-party-parole-position--yes .q-party-parole-party, .q-party-parole-position--yes .q-party-parole-org {
-  background-color: #c0d4ed; }
-
-.q-party-parole-position--no .s-font-note-s {
-  color: #c31906;
-  border-color: #f9b9a8; }
-
-.q-party-parole-position--no .q-party-parole-party, .q-party-parole-position--no .q-party-parole-org {
-  background-color: #f9b9a8; }
-
-.q-party-parole-position--undecided .s-font-note-s {
-  color: #5c5c5c;
-  border-color: #d6d6d6; }
-
-.q-party-parole-position--undecided .q-party-parole-party, .q-party-parole-position--undecided .q-party-parole-org {
-  background-color: #d6d6d6; }
+  padding: 0px 2px;
+  background-color: currentColor; }

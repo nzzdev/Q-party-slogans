@@ -19,6 +19,9 @@
 .q-party-slogans-label--level2 {
   margin: 8px 0px 0px; }
 
+.q-party-slogans-voices {
+  word-wrap: break-word; }
+
 .q-party-slogans-voice {
   border-radius: 3px;
   padding: 3px;

@@ -26,11 +26,12 @@ export default class PartySlogans {
     this.item = item;
   }
 
-  render(el, drawSize) {
-    el.innerHTML = this.getHtml(drawSize);
+  render(el) {
+    el.innerHTML = this.getHtml();
   }
 
-  getHtml(drawSize = 'large') {
+  getHtml() {
+
     return POSITIONS.map((position) => {
 
       // get parties and organisations
@@ -45,20 +46,22 @@ export default class PartySlogans {
 
       // get legends
       let partyLegend = parties.length > 0 ? `<div class="s-font-note-s q-party-slogans-label--level2">Parteien</div>` : '';
-      let orgLegend = organisations.length > 0 ? `<div class="s-font-note-s q-party-slogans-label--level2">Organisationen</div>` : '';
-
-      let voiceInnerSpanClass = drawSize === 'large' ? 's-font-text' : 's-font-text-s';
+      let orgLegend = organisations.length > 0 ? `<div class="s-font-note-s q-party-slogans-label--level2">Organisationen und Verbände</div>` : '';
 
       return `
         <div class="q-party-slogans-position">
           <div class="s-font-note-s s-font-note-s--strong ${position.labelColorClass} q-party-slogans-label--level1">${position.label.toUpperCase()}</div>
           <div class="q-party-slogans-voices">
             ${partyLegend}
-            ${parties.map((p) => `<span class="${position.voiceColorClass} q-party-slogans-voice"><span class="${voiceInnerSpanClass}">${p}</span></span>`).join('\n')}
+            <div>
+            ${parties.map((p) => `<span class="${position.voiceColorClass} q-party-slogans-voice"><span class="s-font-text">${p}</span></span>`).join('')}
+            </div>
           </div>
           <div class="q-party-slogans-voices">
             ${orgLegend}
-            ${organisations.map((o) => `<span class="${position.voiceColorClass} q-party-slogans-voice"><span class="${voiceInnerSpanClass}">${o}</span></span>`).join('\n')}
+            <div>
+            ${organisations.map((o) => `<span class="${position.voiceColorClass} q-party-slogans-voice"><span class="s-font-text">${o}</span></span>`).join('')}
+            </div>
           </div>
         </div>
       `;

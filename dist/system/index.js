@@ -1,7 +1,7 @@
-System.register(['core-js/es6/object', './rendererConfigDefaults', './resources/PartySlogans', 'fg-loadcss', './resources/onloadCSS', './resources/SizeObserver'], function (_export) {
+System.register(['core-js/es6/object', './rendererConfigDefaults', './resources/PartySlogans', 'fg-loadcss', './resources/onloadCSS'], function (_export) {
   'use strict';
 
-  var rendererConfigDefaults, PartySlogans, loadCSS, onloadCSS, SizeObserver, sizeObserver, stylesLoaded;
+  var rendererConfigDefaults, PartySlogans, loadCSS, onloadCSS, stylesLoaded;
 
   _export('display', display);
 
@@ -62,71 +62,57 @@ System.register(['core-js/es6/object', './rendererConfigDefaults', './resources/
     return new Promise(function (resolve, reject) {
 
       try {
-        (function () {
-          if (!element) throw 'Element is not defined';
+        if (!element) throw 'Element is not defined';
 
-          if (rendererConfig && typeof rendererConfig === 'object') {
-            rendererConfig = Object.assign(rendererConfigDefaults, rendererConfig);
-          } else {
-            rendererConfig = rendererConfigDefaults;
-          }
+        if (rendererConfig && typeof rendererConfig === 'object') {
+          rendererConfig = Object.assign(rendererConfigDefaults, rendererConfig);
+        } else {
+          rendererConfig = rendererConfigDefaults;
+        }
 
-          var graphic = undefined;
+        var graphic = undefined;
 
-          var rendererPromises = [];
+        var rendererPromises = [];
 
-          if (rendererConfig.loadStyles && stylesLoaded === false) {
-            (function () {
-              var themeUrl = rendererConfig.themeUrl || rendererConfig.rendererBaseUrl + 'themes/' + rendererConfig.theme;
-              var themeLoadCSS = loadCSS(themeUrl + '/styles.css');
-              var themeLoadPromise = new Promise(function (resolve, reject) {
-                onloadCSS(themeLoadCSS, function () {
-                  resolve();
-                });
+        if (rendererConfig.loadStyles && stylesLoaded === false) {
+          (function () {
+            var themeUrl = rendererConfig.themeUrl || rendererConfig.rendererBaseUrl + 'themes/' + rendererConfig.theme;
+            var themeLoadCSS = loadCSS(themeUrl + '/styles.css');
+            var themeLoadPromise = new Promise(function (resolve, reject) {
+              onloadCSS(themeLoadCSS, function () {
+                resolve();
               });
-
-              var sophieStylesLoad = loadCSS('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@^0.1.0,sophie-color@~1.0.0,sophie-viz-color@^1.0.0[diverging-6].css');
-              var sophieStylesLoadPromise = new Promise(function (resolve, reject) {
-                onloadCSS(sophieStylesLoad, function () {
-                  resolve();
-                });
-              });
-
-              Promise.all([themeLoadPromise, sophieStylesLoadPromise]).then(function (styles) {
-                stylesLoaded = true;
-              });
-
-              rendererPromises.push(themeLoadPromise);
-              rendererPromises.push(sophieStylesLoadPromise);
-            })();
-          }
-
-          var lastWidth = undefined;
-
-          sizeObserver.onResize(function (rect) {
-            if (rect.width && lastWidth === rect.width) {
-              return;
-            }
-            lastWidth = rect.width;
-
-            var drawSize = getElementSize(rect);
-
-            try {
-              if (withoutContext) {
-                graphic = displayWithoutContext(item, element, drawSize);
-              } else {
-                graphic = displayWithContext(item, element, drawSize, hideTitle);
-              }
-            } catch (e) {
-              reject(e);
-            }
-
-            resolve({
-              graphic: graphic,
-              promises: rendererPromises
             });
-          }, element, true);
-        })();
+
+            var sophieStylesLoad = loadCSS('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@^0.1.0,sophie-color@~1.0.0,sophie-viz-color@^1.0.0[diverging-6].css');
+            var sophieStylesLoadPromise = new Promise(function (resolve, reject) {
+              onloadCSS(sophieStylesLoad, function () {
+                resolve();
+              });
+            });
+
+            Promise.all([themeLoadPromise, sophieStylesLoadPromise]).then(function (styles) {
+              stylesLoaded = true;
+            });
+
+            rendererPromises.push(themeLoadPromise);
+            rendererPromises.push(sophieStylesLoadPromise);
+          })();
+        }
+
+        try {
+          if (withoutContext) {
+            graphic = displayWithoutContext(item, element);
+          } else {
+            graphic = displayWithContext(item, element, hideTitle);
+          }
+          resolve({
+            graphic: graphic,
+            promises: rendererPromises
+          });
+        } catch (e) {
+          reject(e);
+        }
       } catch (e) {
         reject(e);
       }
@@ -142,11 +128,8 @@ System.register(['core-js/es6/object', './rendererConfigDefaults', './resources/
       loadCSS = _fgLoadcss.loadCSS;
     }, function (_resourcesOnloadCSS) {
       onloadCSS = _resourcesOnloadCSS['default'];
-    }, function (_resourcesSizeObserver) {
-      SizeObserver = _resourcesSizeObserver['default'];
     }],
     execute: function () {
-      sizeObserver = new SizeObserver();
       stylesLoaded = false;
     }
   };

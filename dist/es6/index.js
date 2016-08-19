@@ -6,9 +6,6 @@ import PartySlogans from './resources/PartySlogans';
 import {loadCSS} from 'fg-loadcss';
 import onloadCSS from './resources/onloadCSS';
 
-import SizeObserver from './resources/SizeObserver';
-var sizeObserver = new SizeObserver();
-
 var stylesLoaded = false;
 
 function wrapEmojisInSpan(text) {
@@ -90,7 +87,6 @@ export function display(item, element, rendererConfig, withoutContext = false) {
           });
         });
 
-
         // additional styles
         let sophieStylesLoad = loadCSS('https://service.sophie.nzz.ch/bundle/sophie-q@~0.1.1,sophie-font@^0.1.0,sophie-color@~1.0.0,sophie-viz-color@^1.0.0[diverging-6].css');
         let sophieStylesLoadPromise = new Promise((resolve, reject) => {
@@ -108,32 +104,19 @@ export function display(item, element, rendererConfig, withoutContext = false) {
         rendererPromises.push(sophieStylesLoadPromise);
       }
 
-      let lastWidth;
-
-      sizeObserver.onResize((rect) => {
-        if (rect.width && lastWidth === rect.width) {
-          return;
+      try {
+        if (withoutContext) {
+          graphic = displayWithoutContext(item, element);
+        } else {
+          graphic = displayWithContext(item, element, hideTitle);
         }
-        lastWidth = rect.width;
-        
-        let drawSize = getElementSize(rect);
-
-        try {
-          if (withoutContext) {
-            graphic = displayWithoutContext(item, element, drawSize);
-          } else {
-            graphic = displayWithContext(item, element, drawSize, hideTitle);
-          }
-        } catch (e) {
-          reject(e);
-        }
-
         resolve({
           graphic: graphic,
           promises: rendererPromises
         });
-
-      }, element, true);
+      } catch (e) {
+        reject(e);
+      }
 
     } catch (e) {
       reject(e);

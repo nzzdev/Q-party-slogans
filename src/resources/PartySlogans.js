@@ -26,13 +26,11 @@ export default class PartySlogans {
     this.item = item;
   }
 
-  render(el, drawSize) {
-    el.innerHTML = this.getHtml(drawSize);
+  render(el) {
+    el.innerHTML = this.getHtml();
   }
 
-  getHtml(drawSize = 'large') {
-
-    let voiceInnerSpanClass = drawSize === 'large' ? 's-font-text' : 's-font-text-s';
+  getHtml() {
 
     return POSITIONS.map((position) => {
 
@@ -56,13 +54,13 @@ export default class PartySlogans {
           <div class="q-party-slogans-voices">
             ${partyLegend}
             <div>
-            ${parties.map((p) => `<span class="${position.voiceColorClass} q-party-slogans-voice"><span class="${voiceInnerSpanClass}">${p}</span></span>`).join('')}
+            ${parties.map((p) => `<span class="${position.voiceColorClass} q-party-slogans-voice"><span class="s-font-text">${p}</span></span>`).join('')}
             </div>
           </div>
           <div class="q-party-slogans-voices">
             ${orgLegend}
             <div>
-            ${organisations.map((o) => `<span class="${position.voiceColorClass} q-party-slogans-voice"><span class="${voiceInnerSpanClass}">${o}</span></span>`).join('')}
+            ${organisations.map((o) => `<span class="${position.voiceColorClass} q-party-slogans-voice"><span class="s-font-text">${o}</span></span>`).join('')}
             </div>
           </div>
         </div>

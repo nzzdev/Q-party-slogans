@@ -51,7 +51,7 @@ export default class PartySlogans {
       let orgLegend = organisations.length > 0 ? `<div class="s-font-note-s q-party-slogans-label--level2">Organisationen und Verbände</div>` : '';
 
       return `
-        <div class="q-party-slogans-position ${drawSize === 'large' ? '' : 'q-party-slogans-position--small'}">
+        <div class="q-party-slogans-position">
           <div class="s-font-note-s s-font-note-s--strong ${position.labelColorClass} q-party-slogans-label--level1">${position.label.toUpperCase()}</div>
           <div class="q-party-slogans-voices">
             ${partyLegend}

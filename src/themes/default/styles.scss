@@ -33,17 +33,17 @@
 
 .q-party-slogans-voices {
   word-wrap: break-word;
-}
 
-.q-party-slogans-voice {
-  border-radius: 3px;
-  padding: 3px;
-  margin: 2px;
-  background-color: currentColor;
-  word-wrap: break-word;
+  .q-party-slogans-voice {
+    line-height: 1.85;
+    border-radius: 3px;
+    padding: 3px;
+    margin: 2px;
+    background-color: currentColor;
+    word-wrap: break-word;
 
-  &:first-child {
-    margin-left: 0px;
+    &:first-child {
+      margin-left: 0px;
+    }
   }
-
 }

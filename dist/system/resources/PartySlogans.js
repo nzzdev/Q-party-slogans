@@ -60,9 +60,9 @@ System.register([], function (_export) {
               var partyLegend = parties.length > 0 ? '<div class="s-font-note-s q-party-slogans-label--level2">Parteien</div>' : '';
               var orgLegend = organisations.length > 0 ? '<div class="s-font-note-s q-party-slogans-label--level2">Organisationen und Verbände</div>' : '';
 
-              return '\n        <div class="q-party-slogans-position">\n          <div class="s-font-note-s s-font-note-s--strong ' + position.labelColorClass + ' q-party-slogans-label--level1">' + position.label.toUpperCase() + '</div>\n          <div class="q-party-slogans-voices">\n            ' + partyLegend + '\n            <div>\n            ' + parties.map(function (p) {
+              return '\n        <div class="q-party-slogans-position">\n          <div class="s-font-note-s s-font-note-s--strong ' + position.labelColorClass + ' q-party-slogans-label--level1">' + position.label.toUpperCase() + '</div>\n          <div class="q-party-slogans-voices">\n            ' + partyLegend + '\n            <div class="s-font-text">\n              ' + parties.map(function (p) {
                 return '<span class="' + position.voiceColorClass + ' q-party-slogans-voice"><span class="s-font-text">' + p + '</span></span>';
-              }).join('') + '\n            </div>\n          </div>\n          <div class="q-party-slogans-voices">\n            ' + orgLegend + '\n            <div>\n            ' + organisations.map(function (o) {
+              }).join('') + '\n            </div>\n          </div>\n          <div class="q-party-slogans-voices">\n            ' + orgLegend + '\n            <div class="s-font-text">\n              ' + organisations.map(function (o) {
                 return '<span class="' + position.voiceColorClass + ' q-party-slogans-voice"><span class="s-font-text">' + o + '</span></span>';
               }).join('') + '\n            </div>\n          </div>\n        </div>\n      ';
             }).join('');

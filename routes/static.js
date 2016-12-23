@@ -23,7 +23,7 @@ module.exports = {
           rendererStyle: 'default'
         }
       ],
-      markup: staticTpl.render(request.payload)
+      markup: staticTpl.render(request.payload.item)
     }
     return reply(data)
   }

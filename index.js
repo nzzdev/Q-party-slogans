@@ -13,22 +13,13 @@ server.connection({
   port: 3000
 });
 
-server.register(require('vision'), err => {
+// Add the route
+server.route(routes);
+
+// Start the server
+server.start((err) => {
 
   Hoek.assert(!err, err);
 
-  // const staticTpl = require('./views/templates/static.marko');
-
-  // Add the route
-  server.route(routes);
-
-  // Start the server
-  server.start((err) => {
-
-    Hoek.assert(!err, err);
-
-    console.log('Server running at:', server.info.uri);
-  });
+  console.log('Server running at:', server.info.uri);
 });
-
-

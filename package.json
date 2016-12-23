@@ -27,6 +27,7 @@
     "url": "http://github.com/nzzdev/Q-party-slogans"
   },
   "dependencies": {
+    "enjoi": "^2.1.0",
     "forever": "^0.15.3",
     "hapi": "^16.0.2",
     "hoek": "^4.1.0",

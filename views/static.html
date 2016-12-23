@@ -1,4 +1,3 @@
-<h3 class="s-q-item__title">{{wrapEmojisInSpan(title)}}</h3>
 <div class="q-item-container">
   {{#each positions as position}}
     <div class="q-party-slogans-position">
@@ -31,8 +30,6 @@
 </div>
 
 <script>
-  import {wrapEmojisInSpan} from './helpers.js'
-
   const positions = [
     {
       name: 'yes',
@@ -59,9 +56,6 @@
       return {
         positions: positions
       }
-    },
-    helpers: {
-      wrapEmojisInSpan: wrapEmojisInSpan
     }
   };
 </script>

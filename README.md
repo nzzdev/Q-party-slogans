@@ -1,7 +1,14 @@
 # NZZ Storytelling Q Party Slogans
 
-## Development
-Run `gulp watch` to get a webserver. Point your Browser to the URL given in the console.
+## This is WIP for now
+Things to look at:
+  * https://github.com/tlivings/enjoi
+
+## development
+run `./node_modules/forever/bin/forever --watch --watchDirectory ./ index.js` to have a server restarting on changes
+
+
+-----
 
 ## Travis Setup
   * Github Token for JSPM: https://gist.github.com/topheman/25241e48a1b4f91ec6d4

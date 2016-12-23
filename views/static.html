@@ -1,0 +1,67 @@
+<h3 class="s-q-item__title">{{wrapEmojisInSpan(title)}}</h3>
+<div class="q-item-container">
+  {{#each positions as position}}
+    <div class="q-party-slogans-position">
+      <div class="s-font-note-s s-font-note-s--strong ${position.labelColorClass} q-party-slogans-label--level1">{{position.label.toUpperCase()}}</div>
+      
+      {{#if data[position.name].parties.length > 0}}
+        <div class="q-party-slogans-voices">
+          <div class="s-font-note-s q-party-slogans-label--level2">Parteien</div>
+          <div class="s-font-text">
+            {{#each data[position.name].parties as party}}
+              <span class="{{position.voiceColorClass}} q-party-slogans-voice"><span class="s-font-text">{{party}}</span></span>
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+
+      {{#if data[position.name].organisations.length > 0}}
+        <div class="q-party-slogans-voices">
+          <div class="s-font-note-s q-party-slogans-label--level2">Organisationen und Verbände</div>
+          <div class="s-font-text">
+            {{#each data[position.name].organisations as organisation}}
+              <span class="{{position.voiceColorClass}} q-party-slogans-voice"><span class="s-font-text">{{organisation}}</span></span>
+            {{/each}}
+          </div>
+        </div>
+      {{/if}}
+
+    </div>
+  {{/each}}
+</div>
+
+<script>
+  import {wrapEmojisInSpan} from './helpers.js'
+
+  const positions = [
+    {
+      name: 'yes',
+      label: 'Ja',
+      labelColorClass: 's-viz-color-diverging-6-6',
+      voiceColorClass: 's-viz-color-diverging-6-4'
+    },
+    {
+      name: 'no',
+      label: 'Nein',
+      labelColorClass: 's-viz-color-diverging-6-1',
+      voiceColorClass: 's-viz-color-diverging-6-3'
+    },
+    {
+      name: 'undecided',
+      label: 'Stimmfreigabe',
+      labelColorClass: 's-color-gray-10',
+      voiceColorClass: 's-color-gray-4'
+    }
+  ]
+
+  export default {
+    data: () => {
+      return {
+        positions: positions
+      }
+    },
+    helpers: {
+      wrapEmojisInSpan: wrapEmojisInSpan
+    }
+  };
+</script>

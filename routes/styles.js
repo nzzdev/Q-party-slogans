@@ -1,12 +1,14 @@
 const sass = require('node-sass');
 const Boom = require('boom');
+const path = require('path');
 
+const parentDir = __dirname + '/../styles/'
 module.exports = {
   method: 'GET',
   path: '/styles/{path*}',
   handler: function(request, reply) {
     let result = sass.render({
-      file: `styles/${request.params.path}.scss`,
+      file: parentDir + `${request.params.path}.scss`,
       outputStyle: 'compressed'
     }, 
     (err, result) => {

@@ -9,7 +9,6 @@ const routes = require('./routes/routes.js');
 // Create a server with a host and port
 const server = new Hapi.Server();
 server.connection({ 
-  host: 'localhost', 
   port: 3000
 });
 

@@ -1,8 +1,9 @@
 const Joi = require('joi');
 const Enjoi = require('enjoi');
 const fs = require('fs');
+const resourcesDir = __dirname + '/../resources/';
 
-const schemaString = JSON.parse(fs.readFileSync('resources/schema.json', { encoding: 'utf-8'}));
+const schemaString = JSON.parse(fs.readFileSync(resourcesDir + 'schema.json', { encoding: 'utf-8'}));
 const schema = Enjoi(schemaString);
 
 require('svelte/ssr/register');

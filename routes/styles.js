@@ -3,6 +3,7 @@ const Boom = require('boom');
 const path = require('path');
 
 const stylesDir = __dirname + '/../styles/'
+
 module.exports = {
   method: 'GET',
   path: '/styles/{path*}',

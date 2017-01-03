@@ -1,0 +1,83 @@
+{ 
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "annotations": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "yes": {
+          "type": "object",
+          "properties": {
+            "parties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "organisations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "no": {
+          "type": "object",
+          "properties": {
+            "parties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "organisations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "undecided": {
+          "type": "object",
+          "properties": {
+            "parties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "organisations": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": ["title", "data"]
+}

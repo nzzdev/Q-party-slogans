@@ -22,16 +22,24 @@
     }
   ],
   "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
   "repository": {
     "type": "git",
     "url": "http://github.com/nzzdev/Q-party-slogans"
   },
   "dependencies": {
+    "chai": "^3.5.0",
     "enjoi": "^2.1.0",
     "forever": "^0.15.3",
     "hapi": "^16.0.2",
     "hoek": "^4.1.0",
     "joi": "^10.0.6",
+    "jsdom": "^9.9.1",
+    "json-schema-faker": "^0.4.0",
+    "mocha": "^3.2.0",
+    "node-fetch": "^1.6.3",
     "node-sass": "^4.1.1",
     "path": "^0.12.7",
     "svelte": "^1.6.0"

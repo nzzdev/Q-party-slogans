@@ -8,16 +8,18 @@ module.exports = {
   method: 'GET',
   path: '/styles/{path*}',
   handler: function(request, reply) {
-    let result = sass.render({
-      file: stylesDir + `${request.params.path}.scss`,
-      outputStyle: 'compressed'
-    }, 
-    (err, result) => {
-      if (err) {
-        reply(Boom.badImplementation(err));
-      } else {
-        reply(result.css)
+    sass.render(
+      {
+        file: stylesDir + `${request.params.path}.scss`,
+        outputStyle: 'compressed'
+      }, 
+      (err, result) => {
+        if (err) {
+          reply(Boom.badImplementation(err));
+        } else {
+          reply(result.css)
+        }
       }
-    })
+    )
   }
 }

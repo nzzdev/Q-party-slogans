@@ -19,6 +19,10 @@
     {
       "name": "Beni Buess",
       "email": "beni.buess@nzz.ch"
+    },
+    {
+      "name": "Sharon Funke",
+      "email": "sharon.funke@nzz.ch"
     }
   ],
   "main": "index.js",

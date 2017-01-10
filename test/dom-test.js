@@ -15,9 +15,8 @@ function elementCount(selector) {
     return new Promise((resolve, reject) => {
         JsDom.env(
             markup,
-            ["http://code.jquery.com/jquery.js"],
             (err, window) => {
-                resolve(window.$(selector).length);
+                resolve(window.document.querySelectorAll(selector).length);
         })
     })
 }

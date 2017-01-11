@@ -4,21 +4,21 @@ const Hapi = require('hapi');
 const Path = require('path');
 const Hoek = require('hoek');
 
+const server = require('./server.js');
 const routes = require('./routes/routes.js');
 
-// Create a server with a host and port
-const server = new Hapi.Server();
-server.connection({ 
-  port: 3000
-});
+var plugins = [
+  require('inert'),
+]
 
-// Add the route
-server.route(routes);
-
-// Start the server
-server.start((err) => {
-
+server.register(plugins, err => {
   Hoek.assert(!err, err);
 
-  console.log('Server running at:', server.info.uri);
+  server.route(routes);
+
+  server.start(err => {
+    Hoek.assert(!err, err);
+    console.log('Server running at: ', server.info.uri)
+  })
+
 });

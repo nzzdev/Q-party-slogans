@@ -1,8 +1,7 @@
 const JsDom = require('jsdom');
-const Fetch = require('node-fetch');
 const JsonSchemaFaker = require('json-schema-faker');
 const schema = require('../resources/schema.json');
-const Expect = require('chai').expect;
+const expect = require('chai').expect;
 
 // would be nice to do it with json schema faker, but apparently for object "data" 
 // the required status is ignored :/
@@ -36,25 +35,25 @@ function elementCount(selector) {
 describe('Q party paroles markup check', function() {
   it('should pass if 3 level 1 DOM elements are found', function() {
     return elementCount('div.q-party-slogans-label--level1').then(value => {
-      Expect(value).to.be.equal(3);
+      expect(value).to.be.equal(3);
     })
   })
 
   it('should pass if 1 level 2 DOM element is found', function() {
     return elementCount('div.q-party-slogans-label--level2').then(value => {
-      Expect(value).to.be.at.least(1);
+      expect(value).to.be.at.least(1);
     })
   })
 
   it('should pass if not level 3 DOM element are found', function() {
     return elementCount('div.q-party-slogans-label--level3').then(value => {
-      Expect(value).to.be.equal(0);
+      expect(value).to.be.equal(0);
     })
   })
 
   it('should pass if level 1 DOM element is found', function() {
     return element('.s-q-item__title').then(element => {
-      Expect(element.innerHTML).to.be.equal('nisi est');
+      expect(element.innerHTML).to.be.equal('nisi est');
     })
   })
 })

@@ -11,7 +11,7 @@ const staticTpl = require('../views/static.html');
 
 module.exports = {
   method: 'POST',
-  path:'/static',
+  path:'/rendering-info/html-static',
   config: {
     validate: {
       payload: {

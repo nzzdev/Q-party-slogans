@@ -6,11 +6,11 @@ const stylesDir = __dirname + '/../styles/'
 
 module.exports = {
   method: 'GET',
-  path: '/styles/{path*}',
+  path: '/stylesheet/{name*}',
   handler: function(request, reply) {
     sass.render(
       {
-        file: stylesDir + `${request.params.path}.scss`,
+        file: stylesDir + `${request.params.name}.scss`,
         outputStyle: 'compressed'
       }, 
       (err, result) => {

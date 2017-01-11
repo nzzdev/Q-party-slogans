@@ -1,6 +1,6 @@
-const styles = require('./styles.js')
-const static = require('./static.js')
+const stylesheet = require('./stylesheet.js')
+const renderingInfo = require('./rendering-info.js')
 
 module.exports = [
-  styles, static
+  stylesheet, renderingInfo
 ]

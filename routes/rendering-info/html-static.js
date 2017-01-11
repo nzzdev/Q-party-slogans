@@ -1,13 +1,14 @@
 const Joi = require('joi');
 const Enjoi = require('enjoi');
 const fs = require('fs');
-const resourcesDir = __dirname + '/../resources/';
+const resourcesDir = __dirname + '/../../resources/';
+const viewsDir     = __dirname + '/../../views/';
 
 const schemaString = JSON.parse(fs.readFileSync(resourcesDir + 'schema.json', { encoding: 'utf-8'}));
 const schema = Enjoi(schemaString);
 
 require('svelte/ssr/register');
-const staticTpl = require('../views/static.html');
+const staticTpl = require(`${viewsDir}/html-static.html`);
 
 module.exports = {
   method: 'POST',

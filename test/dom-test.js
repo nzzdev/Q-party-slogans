@@ -7,7 +7,7 @@ const expect = require('chai').expect;
 // the required status is ignored :/
 const mockData = require('./resources/mock-data');
 require('svelte/ssr/register');
-const staticTpl = require('../views/static.html');
+const staticTpl = require('../views/html-static.html');
 var markup = staticTpl.render(mockData);
 
 

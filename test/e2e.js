@@ -3,11 +3,8 @@
 const Hoek = require('hoek');
 const expect = require('chai').expect;
 const server = require('../server.js');
+const plugins = require('../server-plugins.js');
 const routes = require('../routes/routes.js');
-
-var plugins = [
-  require('inert'),
-]
 
 server.register(plugins, err => {
   Hoek.assert(!err, err);

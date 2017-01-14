@@ -1,22 +1,29 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
+  "title": "party_slogans",
   "properties": {
     "title": {
+      "Q:label": "Titel",
       "type": "string"
     },
     "annotations": {
+      "Q:label": "Anmerkungen",
       "type": "string"
     },
     "sources": {
+      "Q:label": "Quellen",
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
           "label": {
+            "Q:label": "Label",
             "type": "string"
           },
           "url": {
+            "Q:label": "URL",
+            "Q:type": "url",
             "type": "string"
           }
         }
@@ -24,54 +31,70 @@
     },
     "data": {
       "type": "object",
+      "Q:label": "Daten",
       "properties": {
         "yes": {
           "type": "object",
+          "Q:label": "Ja Parole",
           "properties": {
             "parties": {
               "type": "array",
+              "Q:label": "Parteien",
               "items": {
-                "type": "string"
+                "type": "string",
+                "Q:label": "Partei"
               }
             },
             "organisations": {
               "type": "array",
+              "Q:label": "Organisationen",
               "items": {
-                "type": "string"
+                "type": "string",
+                "Q:label": "Organisation"
               }
             }
           }
         },
         "no": {
           "type": "object",
+          "Q:label": "Nein Parole",
           "properties": {
             "parties": {
               "type": "array",
+              "Q:label": "Parteien",
               "items": {
-                "type": "string"
+                "type": "string",
+                "Q:label": "Partei"
               }
             },
             "organisations": {
               "type": "array",
+              "Q:label": "Organisationen",
               "items": {
-                "type": "string"
+                "type": "string",
+                "Q:label": "Organisation"
               }
             }
           }
         },
         "undecided": {
           "type": "object",
+          "Q:label": "Stimmfreigabe",
           "properties": {
             "parties": {
               "type": "array",
+              "Q:label": "Parteien",
               "items": {
-                "type": "string"
+                "type": "string",
+                "Q:label": "Partei"
               }
             },
             "organisations": {
               "type": "array",
+              "Q:label": "Organisationen",
               "items": {
-                "type": "string"
+                "type": "string",
+                "Q:label": "Organisation"
               }
             }
           }

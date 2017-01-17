@@ -39,9 +39,9 @@ describe('Q party paroles markup check', function() {
     })
   })
 
-  it('should pass if 1 level 2 DOM element is found', function() {
+  it('should not render level--2 with only one empty string', function() {
     return elementCount('div.q-party-slogans-label--level2').then(value => {
-      expect(value).to.be.at.least(1);
+      expect(value).to.be.at.equal(5);
     })
   })
 

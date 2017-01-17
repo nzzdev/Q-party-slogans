@@ -17,11 +17,7 @@ module.exports = {
         ''
       ],
       organisations: [
-        'ipsum non',
-        'minim pariatur nisi',
-        'commodo',
-        'magna Lorem',
-        'cupida'
+        '',
       ]
     },
     undecided: {

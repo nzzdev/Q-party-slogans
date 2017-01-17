@@ -13,7 +13,8 @@ module.exports = {
     },
     yes: {
       parties: [
-        'ut'
+        'ut',
+        ''
       ],
       organisations: [
         'ipsum non',

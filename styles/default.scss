@@ -1,0 +1,44 @@
+.q-party-slogans-item {
+  padding: 20px 0px;
+
+  box-sizing: border-box;
+  * {
+    box-sizing: inherit;
+  }
+}
+
+.q-party-slogans-position {
+  margin: 0px 0px 12px;
+}
+
+.q-party-slogans-label {
+
+  &--level1 {
+    text-transform: uppercase;
+    border: 0px solid currentColor;
+    border-bottom-width: 1px;
+    margin: 18px 0px 3px;
+  }
+
+  &--level2 {
+    margin: 8px 0px 0px;
+  }
+
+}
+
+.q-party-slogans-voices {
+  word-wrap: break-word;
+
+  .q-party-slogans-voice {
+    line-height: 1.85;
+    border-radius: 3px;
+    padding: 3px;
+    margin: 2px;
+    background-color: currentColor;
+    word-wrap: break-word;
+
+    &:first-child {
+      margin-left: 0px;
+    }
+  }
+}

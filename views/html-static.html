@@ -1,7 +1,7 @@
 <div class="q-item-container">
   <h3 class="s-q-item__title">{{title}}</h3>
   {{#each positions as position}}
-    {{#if data[position.name].parties.length > 0 || data[position.name].organisations.length > 0}}
+    {{#if (data[position.name].parties.length > 0 && data[position.name].parties[0].length > 0) || (data[position.name].organisations.length > 0 && data[position.name].organisations[0].length > 0)}}
       <div class="q-party-slogans-position">
         <div class="s-font-note-s s-font-note-s--strong ${position.labelColorClass} q-party-slogans-label--level1">{{position.label.toUpperCase()}}</div>
 

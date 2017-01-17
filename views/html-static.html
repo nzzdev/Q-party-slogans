@@ -9,7 +9,9 @@
           <div class="s-font-note-s q-party-slogans-label--level2">Parteien</div>
           <div class="s-font-text">
             {{#each data[position.name].parties as party}}
-              <span class="{{position.voiceColorClass}} q-party-slogans-voice"><span class="s-font-text">{{party}}</span></span>
+              {{#if party.length > 0}}
+                <span class="{{position.voiceColorClass}} q-party-slogans-voice"><span class="s-font-text">{{party}}</span></span>
+              {{/if}}
             {{/each}}
           </div>
         </div>
@@ -20,7 +22,9 @@
           <div class="s-font-note-s q-party-slogans-label--level2">Organisationen und Verbände</div>
           <div class="s-font-text">
             {{#each data[position.name].organisations as organisation}}
-              <span class="{{position.voiceColorClass}} q-party-slogans-voice"><span class="s-font-text">{{organisation}}</span></span>
+              {{#if organisation.length > 0}}
+                <span class="{{position.voiceColorClass}} q-party-slogans-voice"><span class="s-font-text">{{organisation}}</span></span>
+              {{/if}}
             {{/each}}
           </div>
         </div>

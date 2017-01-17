@@ -56,5 +56,11 @@ describe('Q party paroles markup check', function() {
       expect(element.innerHTML).to.be.equal('nisi est');
     })
   })
+
+  it('should not render empty parties or organisations', function() {
+    return elementCount('.q-party-slogans-position:first-of-type .q-party-slogans-voices:nth-child(2) .q-party-slogans-voice').then(value => {
+      expect(value).to.be.equal(1);
+    })
+  })
 })
 

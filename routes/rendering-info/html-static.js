@@ -16,7 +16,8 @@ module.exports = {
   config: {
     validate: {
       payload: {
-        item: schema
+        item: schema,
+        toolRuntimeConfig: Joi.object()
       }
     },
   },

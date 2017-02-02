@@ -7,10 +7,6 @@
       "Q:label": "Titel",
       "type": "string"
     },
-    "annotations": {
-      "Q:label": "Anmerkungen",
-      "type": "string"
-    },
     "sources": {
       "Q:label": "Quellen",
       "type": "array",

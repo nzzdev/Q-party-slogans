@@ -15,8 +15,12 @@ module.exports = {
   path:'/rendering-info/html-static',
   config: {
     validate: {
+      options: {
+        allowUnknown: true
+      },
       payload: {
-        item: schema
+        item: schema,
+        toolRuntimeConfig: Joi.object()
       }
     },
   },

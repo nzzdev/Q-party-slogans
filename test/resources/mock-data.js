@@ -30,6 +30,5 @@ module.exports = {
         'sed id Ut si'
       ]
     }
-  },
-  annotations: 'laborum proident cupidatat irure'
+  }
 }

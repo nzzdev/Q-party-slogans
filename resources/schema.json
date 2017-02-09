@@ -1,28 +1,25 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "title": "party_slogans",
+  "title": "Parteiparolen",
   "properties": {
     "title": {
-      "Q:label": "Titel",
-      "type": "string"
-    },
-    "annotations": {
-      "Q:label": "Anmerkungen",
+      "title": "Titel",
       "type": "string"
     },
     "sources": {
-      "Q:label": "Quellen",
       "type": "array",
+      "title": "Quellen",
       "items": {
         "type": "object",
+        "title": "Quelle",
         "properties": {
           "label": {
-            "Q:label": "Label",
+            "title": "Label",
             "type": "string"
           },
           "url": {
-            "Q:label": "URL",
+            "title": "URL",
             "Q:type": "url",
             "type": "string"
           }
@@ -31,70 +28,70 @@
     },
     "data": {
       "type": "object",
-      "Q:label": "Daten",
+      "title": "Daten",
       "properties": {
         "yes": {
           "type": "object",
-          "Q:label": "Ja Parole",
+          "title": "Ja Parole",
           "properties": {
             "parties": {
               "type": "array",
-              "Q:label": "Parteien",
+              "title": "Parteien",
               "items": {
                 "type": "string",
-                "Q:label": "Partei"
+                "title": "Partei"
               }
             },
             "organisations": {
               "type": "array",
-              "Q:label": "Organisationen",
+              "title": "Organisationen",
               "items": {
                 "type": "string",
-                "Q:label": "Organisation"
+                "title": "Organisation"
               }
             }
           }
         },
         "no": {
           "type": "object",
-          "Q:label": "Nein Parole",
+          "title": "Nein Parole",
           "properties": {
             "parties": {
               "type": "array",
-              "Q:label": "Parteien",
+              "title": "Parteien",
               "items": {
                 "type": "string",
-                "Q:label": "Partei"
+                "title": "Partei"
               }
             },
             "organisations": {
               "type": "array",
-              "Q:label": "Organisationen",
+              "title": "Organisationen",
               "items": {
                 "type": "string",
-                "Q:label": "Organisation"
+                "title": "Organisation"
               }
             }
           }
         },
         "undecided": {
           "type": "object",
-          "Q:label": "Stimmfreigabe",
+          "title": "Stimmfreigabe",
           "properties": {
             "parties": {
               "type": "array",
-              "Q:label": "Parteien",
+              "title": "Parteien",
               "items": {
                 "type": "string",
-                "Q:label": "Partei"
+                "title": "Partei"
               }
             },
             "organisations": {
               "type": "array",
-              "Q:label": "Organisationen",
+              "title": "Organisationen",
               "items": {
                 "type": "string",
-                "Q:label": "Organisation"
+                "title": "Organisation"
               }
             }
           }

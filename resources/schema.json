@@ -7,25 +7,6 @@
       "title": "Titel",
       "type": "string"
     },
-    "sources": {
-      "type": "array",
-      "title": "Quellen",
-      "items": {
-        "type": "object",
-        "title": "Quelle",
-        "properties": {
-          "label": {
-            "title": "Label",
-            "type": "string"
-          },
-          "url": {
-            "title": "URL",
-            "Q:type": "url",
-            "type": "string"
-          }
-        }
-      }
-    },
     "data": {
       "type": "object",
       "title": "Daten",

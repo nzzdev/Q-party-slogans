@@ -8,7 +8,7 @@ const schemaString = JSON.parse(fs.readFileSync(resourcesDir + 'schema.json', { 
 const schema = Enjoi(schemaString);
 
 require('svelte/ssr/register');
-const staticTpl = require(`${viewsDir}/html-static.html`);
+const staticTpl = require(`${viewsDir}/HtmlStatic.html`);
 
 module.exports = {
   method: 'POST',

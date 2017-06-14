@@ -23,6 +23,7 @@ module.exports = {
         toolRuntimeConfig: Joi.object()
       }
     },
+    cors: true
   },
   handler: function(request, reply) {
     let data = {

@@ -30,11 +30,11 @@
 
 }
 
-.q-party-slogans-voices {
-  word-wrap: break-word;
+.q-party-slogans-voices-container {
+  display: flex; 
+  flex-wrap: wrap;
 
   .q-party-slogans-voice {
-    line-height: 1.85;
     border-radius: 3px;
     padding: 3px;
     margin: 2px;

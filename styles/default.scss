@@ -1,5 +1,10 @@
 .q-party-slogans {
   opacity: 1 !important;
+  box-sizing: border-box;
+}
+
+.q-party-slogans * {
+  box-sizing: border-box;
 }
 
 .q-party-slogans-item {
@@ -31,7 +36,8 @@
 }
 
 .q-party-slogans-voices-container {
-  display: flex; 
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
 
   .q-party-slogans-voice {
@@ -40,6 +46,7 @@
     margin: 2px;
     background-color: currentColor;
     word-wrap: break-word;
+    max-width: calc(100% - 4px);
 
     &:first-child {
       margin-left: 0px;

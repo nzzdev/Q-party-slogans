@@ -1,4 +1,4 @@
-<div class="q-item-container">
+<div class="q-item-container q-party-slogans" style="opacity: 0;">
   <h3 class="s-q-item__title">{{title}}</h3>
   {{#each positions as position}}
     {{#if (data[position.name].parties.length > 0 && data[position.name].parties[0].length > 0) || (data[position.name].organisations.length > 0 && data[position.name].organisations[0].length > 0)}}
@@ -11,7 +11,7 @@
             <div class="s-font-text q-party-slogans-voices-container">
               {{#each data[position.name].parties as party}}
                 {{#if party.length > 0}}
-                  <span class="{{position.voiceColorClass}} q-party-slogans-voice"><span class="s-font-text">{{party}}</span></span>
+                  <div class="{{position.voiceColorClass}} q-party-slogans-voice"><div class="s-font-text">{{party}}</div></div>
                 {{/if}}
               {{/each}}
             </div>
@@ -24,7 +24,7 @@
             <div class="s-font-text q-party-slogans-voices-container">
               {{#each data[position.name].organisations as organisation}}
                 {{#if organisation.length > 0}}
-                  <span class="{{position.voiceColorClass}} q-party-slogans-voice"><span class="s-font-text">{{organisation}}</span></span>
+                  <div class="{{position.voiceColorClass}} q-party-slogans-voice"><div class="s-font-text">{{organisation}}</div></div>
                 {{/if}}
               {{/each}}
             </div>

@@ -1,4 +1,5 @@
-const JsDom = require('jsdom');
+const jsdom = require('jsdom');
+const { JSDOM } = jsdom;
 const JsonSchemaFaker = require('json-schema-faker');
 const schema = require('../resources/schema.json');
 const expect = require('chai').expect;
@@ -13,21 +14,15 @@ var markup = staticTpl.render(mockData);
 
 function element(selector) {
   return new Promise((resolve, reject) => {
-    JsDom.env(
-      markup,
-      (err, window) => {
-        resolve(window.document.querySelector(selector));
-      })
+    const dom = new JSDOM(markup);
+    resolve(dom.window.document.querySelector(selector));
   })
 }
 
 function elementCount(selector) {
   return new Promise((resolve, reject) => {
-    JsDom.env(
-      markup,
-      (err, window) => {
-        resolve(window.document.querySelectorAll(selector).length);
-      })
+    const dom = new JSDOM(markup);
+    resolve(dom.window.document.querySelectorAll(selector).length);
   })
 }
 

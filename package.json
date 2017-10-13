@@ -1,6 +1,6 @@
 {
   "name": "@nzz/q-party-slogans",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Q Party Slogans",
   "keywords": [
     "storytelling",
@@ -27,6 +27,7 @@
   ],
   "main": "index.js",
   "scripts": {
+    "build": "rm -rf styles && mkdir styles && node tasks/build.js",
     "test": "./node_modules/mocha/bin/mocha"
   },
   "repository": {
@@ -36,6 +37,7 @@
   "dependencies": {
     "autoprefixer": "^7.1.1",
     "chai": "^4.0.2",
+    "cssnano": "^3.10.0",
     "enjoi": "^2.1.0",
     "forever": "^0.15.3",
     "hapi": "^16.0.2",
@@ -49,6 +51,7 @@
     "node-sass": "^4.1.1",
     "path": "^0.12.7",
     "postcss": "^6.0.2",
+    "postcss-import": "^11.0.0",
     "svelte": "1.22.3"
   }
 }

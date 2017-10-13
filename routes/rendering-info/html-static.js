@@ -4,6 +4,8 @@ const fs = require('fs');
 const resourcesDir = __dirname + '/../../resources/';
 const viewsDir     = __dirname + '/../../views/';
 
+const styleHashMap = require(__dirname + `/../../styles/hashMap.json`);
+
 const schemaString = JSON.parse(fs.readFileSync(resourcesDir + 'schema.json', { encoding: 'utf-8'}));
 const schema = Enjoi(schemaString);
 
@@ -23,14 +25,14 @@ module.exports = {
         toolRuntimeConfig: Joi.object()
       }
     },
+    cache: false, // do not send cache control header to let it be added by Q Server
     cors: true
   },
   handler: function(request, reply) {
     let data = {
       stylesheets: [
         {
-          name: 'default',
-          type: 'critical'
+          name: styleHashMap.default
         }
       ],
       markup: staticTpl.render(request.payload.item)

@@ -1,9 +1,7 @@
-const schema = require('./schema.js')
-const stylesheet = require('./stylesheet.js')
-const htmlStatic = require('./rendering-info/html-static.js')
-
 module.exports = [
-  schema,
-  stylesheet,
-  htmlStatic
+  require('./schema.js'),
+  require('./stylesheet.js'),
+  require('./rendering-info/html-static.js'),
+  require('./health.js'),
+  require('./fixtures/data.js')
 ]

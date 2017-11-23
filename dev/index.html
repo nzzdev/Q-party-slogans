@@ -1,0 +1,71 @@
+<!-- index.html to test what markup would look like locally (independent of target) -->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Q Poll Result</title>
+    <meta name="description" content="">
+    <!-- Use this for nzzas (in the future maybe also implement a select element loading correct stylesheets) 
+      <link rel="stylesheet" href="https://context-service.st.nzz.ch/stylesheet/all/nzzas.nzz.ch.css">
+      <link rel="stylesheet" href="https://service.sophie.nzz.ch/bundle/sophie-nzzas-q@^1,sophie-nzzas-font@^1,sophie-nzzas-color@^1,sophie-nzzas-viz-color@^1[diverging-6].css"> 
+    -->
+    <link rel="stylesheet" href="https://context-service.st.nzz.ch/stylesheet/all/nzz.ch.css">
+    <link rel="stylesheet" href="https://service.sophie.nzz.ch/bundle/sophie-q@^1,sophie-font@^1,sophie-color@^1,sophie-viz-color@^1[diverging-6],sophie-input@^1[select].css">
+    <script src="https://rawgit.com/filamentgroup/loadCSS/master/src/loadCSS.js"></script> 
+  </head>
+  <body>
+    <div id="container">
+      <select id="fixtures-select" class="s-input-select" style="margin-bottom: 20px;"></select>
+      <div id="slogans"></div>
+    </div>
+    <script>
+      fetch('http://localhost:3000/fixtures/data')
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error(response);
+        })
+        .then(fixtureData => {
+          let selectElement = document.getElementById('fixtures-select');
+          fixtureData.forEach((data, index) => {
+            let option = document.createElement('option');
+            option.text = data.title;
+            option.value = index;
+            selectElement.appendChild(option);
+          });
+          updateFixtureData(fixtureData, 0);
+          selectElement.addEventListener('change', () => {
+            updateFixtureData(fixtureData, selectElement.selectedIndex);
+          })
+        });
+
+      function updateFixtureData(fixtureData, index) {
+        fetch(`http://localhost:3000/rendering-info/html-static`, {
+          method: 'POST',
+          body: JSON.stringify({
+            item: fixtureData[index]
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(renderingInfoResponse => {
+          if (renderingInfoResponse.ok) {
+            return renderingInfoResponse.json();
+          }
+          throw new Error(renderingInfoResponse);
+        })
+        .then(data => {
+          data.stylesheets.forEach(stylesheet => {
+            if (stylesheet.name) {
+              stylesheet.url = `http://localhost:3000/stylesheet/${stylesheet.name}`
+            }
+            loadCSS(stylesheet.url)
+          })
+          document.getElementById('slogans').innerHTML = data.markup;
+        })
+      }
+    </script>
+  </body>
+</html>

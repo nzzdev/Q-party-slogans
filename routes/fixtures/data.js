@@ -11,7 +11,8 @@ module.exports = {
   path: '/fixtures/data',
   method: 'GET',
   config: {
-    tags: ['api']
+    tags: ['api'],
+    cors: true
   },
   handler: (request, reply) => {
     reply(fixtureData);

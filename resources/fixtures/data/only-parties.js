@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Parolenspiegel zum Nationalstrassenfonds',
+  title: 'only parties',
   data: {
     yes: {
       parties: [

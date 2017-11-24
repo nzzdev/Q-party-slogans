@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'complete',
+  title: 'FIXTURE: complete',
   data: {
     yes: {
       parties: [

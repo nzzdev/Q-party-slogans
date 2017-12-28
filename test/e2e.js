@@ -42,7 +42,7 @@ describe('Q required API', () => {
 
 });
 
-const mockData = require('./resources/mock-data.js');
+const mockData = require('../resources/fixtures/data/complete.js');
 
 describe('rendering-info endpoints', () => {
   

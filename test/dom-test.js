@@ -9,9 +9,6 @@ const staticTpl = require('../views/HtmlStatic.html');
 const mockDataOnlyYes = require('../resources/fixtures/data/only-yes.js');
 const markupOnlyYes = staticTpl.render(mockDataOnlyYes);
 
-console.log(markupOnlyYes);
-
-
 function element(selector) {
   return new Promise((resolve, reject) => {
     const dom = new JSDOM(markupOnlyYes);

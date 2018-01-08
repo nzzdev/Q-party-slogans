@@ -7,7 +7,7 @@ const viewsDir     = __dirname + '/../../views/';
 const styleHashMap = require(__dirname + `/../../styles/hashMap.json`);
 
 const schemaString = JSON.parse(fs.readFileSync(resourcesDir + 'schema.json', { encoding: 'utf-8'}));
-const schema = Enjoi(schemaString);
+const schema = Enjoi(schemaString).required();
 
 require('svelte/ssr/register');
 const staticTpl = require(`${viewsDir}/HtmlStatic.html`);
@@ -15,7 +15,7 @@ const staticTpl = require(`${viewsDir}/HtmlStatic.html`);
 module.exports = {
   method: 'POST',
   path:'/rendering-info/html-static',
-  config: {
+  options: {
     validate: {
       options: {
         allowUnknown: true
@@ -28,7 +28,7 @@ module.exports = {
     cache: false, // do not send cache control header to let it be added by Q Server
     cors: true
   },
-  handler: function(request, reply) {
+  handler: function(request, h) {
     let data = {
       stylesheets: [
         {
@@ -37,6 +37,6 @@ module.exports = {
       ],
       markup: staticTpl.render(request.payload.item)
     }
-    return reply(data)
+    return data;
   }
 }

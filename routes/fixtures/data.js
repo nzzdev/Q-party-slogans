@@ -10,11 +10,11 @@ const fixtureData = [
 module.exports = {
   path: '/fixtures/data',
   method: 'GET',
-  config: {
+  options: {
     tags: ['api'],
     cors: true
   },
-  handler: (request, reply) => {
-    reply(fixtureData);
+  handler: (request, h) => {
+     return fixtureData;
   }
 }

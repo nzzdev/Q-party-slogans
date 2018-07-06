@@ -1,5 +1,8 @@
 <div class="q-item-container q-party-slogans" style="opacity: 0;">
   <h3 class="s-q-item__title">{{title}}</h3>
+  {{#if subtitle && subtitle !== '' }}
+    <div class="q-party-slogans__subtitle s-font-note">{{ subtitle }}</div>
+  {{/if}}
   {{#each positions as position}}
     {{#if (data[position.name].parties.length > 0 && data[position.name].parties[0].length > 0) || (data[position.name].organisations.length > 0 && data[position.name].organisations[0].length > 0)}}
       <div class="q-party-slogans-position">

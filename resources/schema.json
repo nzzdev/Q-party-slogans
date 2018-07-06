@@ -5,7 +5,17 @@
   "properties": {
     "title": {
       "title": "Titel",
-      "type": "string"
+      "type": "string",
+      "Q:options": {
+        "placeholder": "Der Titel bringt die Kernaussage der Tabelle auf den Punkt."
+      }
+    },
+    "subtitle": {
+      "title": "Untertitel",
+      "type": "string",
+      "Q:options": {
+        "placeholder": "Der Untertitel benennt präzise, was in der Grafik zu sehen ist, inklusive Einheiten."
+      }
     },
     "data": {
       "type": "object",

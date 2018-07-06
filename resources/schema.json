@@ -7,14 +7,14 @@
       "title": "Titel",
       "type": "string",
       "Q:options": {
-        "placeholder": "Der Titel bringt die Kernaussage der Tabelle auf den Punkt."
+        "placeholder": "Der Titel bringt die Kernaussage der Umfrageresultate auf den Punkt."
       }
     },
     "subtitle": {
       "title": "Untertitel",
       "type": "string",
       "Q:options": {
-        "placeholder": "Der Untertitel benennt präzise, was in der Grafik zu sehen ist, inklusive Einheiten."
+        "placeholder": "Stimmabsichten zur XY-Vorlage"
       }
     },
     "data": {

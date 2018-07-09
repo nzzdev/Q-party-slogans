@@ -7,14 +7,14 @@
       "title": "Titel",
       "type": "string",
       "Q:options": {
-        "placeholder": "Der Titel bringt die Kernaussage der Umfrageresultate auf den Punkt."
+        "placeholder": "Der Titel bringt die Kernaussage des Parolenspiegels auf den Punkt."
       }
     },
     "subtitle": {
       "title": "Untertitel",
       "type": "string",
       "Q:options": {
-        "placeholder": "Stimmabsichten zur XY-Vorlage"
+        "placeholder": "Parolenspiegel zur XY-Vorlage"
       }
     },
     "data": {

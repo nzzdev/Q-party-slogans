@@ -1,29 +1,17 @@
 module.exports = {
-  title: 'FIXTURE: only parties',
+  title: "FIXTURE: only parties",
   data: {
     yes: {
-      parties: [
-        'CVP',
-        'FDP',
-        'GLP',
-        'SVP'
-      ],
-      organisations: [
-      ]
+      parties: ["CVP", "FDP", "GLP", "SVP"],
+      organisations: []
     },
     no: {
-      parties: [
-        'Grüne',
-        'SP'
-      ],
+      parties: ["Grüne", "SP"],
       organisations: []
     },
     undecided: {
-      parties: [
-        'EVP',
-        'BDP'
-      ],
+      parties: ["EVP", "BDP"],
       organisations: []
     }
   }
-}
+};

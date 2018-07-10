@@ -5,7 +5,17 @@
   "properties": {
     "title": {
       "title": "Titel",
-      "type": "string"
+      "type": "string",
+      "Q:options": {
+        "placeholder": "Der Titel bringt die Kernaussage des Parolenspiegels auf den Punkt&#46;"
+      }
+    },
+    "subtitle": {
+      "title": "Untertitel",
+      "type": "string",
+      "Q:options": {
+        "placeholder": "Parolenspiegel zur XY-Vorlage"
+      }
     },
     "data": {
       "type": "object",

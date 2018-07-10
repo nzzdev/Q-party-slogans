@@ -1,13 +1,13 @@
 const Joi = require("joi");
 const Enjoi = require("enjoi");
 const fs = require("fs");
-const resourcesDir = __dirname + "/../../resources/";
-const viewsDir = __dirname + "/../../views/";
+const resourcesDir = `${__dirname}/../../resources/`;
+const viewsDir = `${__dirname}/../../views/`;
 
-const styleHashMap = require(__dirname + `/../../styles/hashMap.json`);
+const styleHashMap = require(`${__dirname}/../../styles/hashMap.json`);
 
 const schemaString = JSON.parse(
-  fs.readFileSync(resourcesDir + "schema.json", { encoding: "utf-8" })
+  fs.readFileSync(`${resourcesDir}schema.json`, { encoding: "utf-8" })
 );
 const schema = Enjoi(schemaString).required();
 

@@ -47,7 +47,7 @@ async function start() {
       const request = {
         method: "POST",
         url: "/rendering-info/html-static",
-        payload: JSON.stringify({ item: mockData })
+        payload: JSON.stringify({ item: mockData, toolRuntimeConfig: {} })
       };
       const response = await server.inject(request);
       expect(response.statusCode).to.be.equal(200);

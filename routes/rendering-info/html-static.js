@@ -1,20 +1,22 @@
-const Joi = require('joi');
-const Enjoi = require('enjoi');
-const fs = require('fs');
-const resourcesDir = __dirname + '/../../resources/';
-const viewsDir     = __dirname + '/../../views/';
+const Joi = require("joi");
+const Enjoi = require("enjoi");
+const fs = require("fs");
+const resourcesDir = __dirname + "/../../resources/";
+const viewsDir = __dirname + "/../../views/";
 
 const styleHashMap = require(__dirname + `/../../styles/hashMap.json`);
 
-const schemaString = JSON.parse(fs.readFileSync(resourcesDir + 'schema.json', { encoding: 'utf-8'}));
+const schemaString = JSON.parse(
+  fs.readFileSync(resourcesDir + "schema.json", { encoding: "utf-8" })
+);
 const schema = Enjoi(schemaString).required();
 
-require('svelte/ssr/register');
+require("svelte/ssr/register");
 const staticTpl = require(`${viewsDir}/HtmlStatic.html`);
 
 module.exports = {
-  method: 'POST',
-  path:'/rendering-info/html-static',
+  method: "POST",
+  path: "/rendering-info/html-static",
   options: {
     validate: {
       options: {
@@ -36,7 +38,7 @@ module.exports = {
         }
       ],
       markup: staticTpl.render(request.payload.item)
-    }
+    };
     return data;
   }
-}
+};

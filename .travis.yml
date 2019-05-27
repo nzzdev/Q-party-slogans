@@ -1,29 +1,24 @@
 dist: trusty
 sudo: true
 services:
-- docker
+  - docker
 language: node_js
 node_js:
-- '10'
-install:
-- npm install
-before_script:
-- DOCKER_IMAGE_NAME="q-party-slogans"
-- DOCKER_TAG=$TRAVIS_BRANCH
-script:
-- npm run build
-- npm test
-- docker build -t $DOCKER_IMAGE_NAME:$DOCKER_TAG .
-after_success:
-- echo $DOCKER_PASSWORD | docker login -u="$DOCKER_USERNAME" --password-stdin; docker tag $DOCKER_IMAGE_NAME:$DOCKER_TAG
-  nzzonline/$DOCKER_IMAGE_NAME:$DOCKER_TAG; docker push nzzonline/$DOCKER_IMAGE_NAME:$DOCKER_TAG;
-- if [ $TRAVIS_BRANCH == "staging" ] && [ $TRAVIS_PULL_REQUEST == "false" ]; then docker run --rm -it -e RANCHER_URL -e CATTLE_ACCESS_KEY
-  -e CATTLE_SECRET_KEY etlweather/gaucho upgrade $RANCHER_SERVICE_ID_STAGING --auto_complete
-  --start_first --imageUuid="docker:nzzonline/$DOCKER_IMAGE_NAME:$DOCKER_TAG" || true;
-  fi
+  - "10"
 cache:
   directories:
-  - node_modules
+    - node_modules
+install:
+  - npm install
+before_script:
+  - DOCKER_IMAGE_NAME="q-party-slogans"
+  - DOCKER_TAG=${TRAVIS_BRANCH//[^a-zA-Z0-9\_\-\.]/_}
+script:
+  - npm run build
+  - npm run test
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then docker build -t $DOCKER_IMAGE_NAME:$DOCKER_TAG .; fi'
+after_success:
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then echo $DOCKER_PASSWORD | docker login -u="$DOCKER_USERNAME" --password-stdin; docker tag $DOCKER_IMAGE_NAME:$DOCKER_TAG nzzonline/$DOCKER_IMAGE_NAME:$DOCKER_TAG; docker push nzzonline/$DOCKER_IMAGE_NAME:$DOCKER_TAG; fi'
 notifications:
   slack:
     secure: uj7Je7j9coXQdKR/wXW+XUQ+kUDScvy5kxUH5/UC2JCtBBNiPCMMR3nBuOIpdZcgcQYEbGAuBghi+jnI3YSRCewzxWlyhfd64t8zPXVKhovHViFVJGJS1TiaMje6/vSJlxTo8u+Ujg1G/HQygAevBZBZ9BnuSn1L+4UN94yHvbNgwqcO91pAKR/CsddkmCKmPS8FAwQhrm+0U0iM0FZMPg1UYF+dPx/PKcNKSZa6kDmt9xoc1K/C8gQV86Cn+BIJ3gpN+iiksQbNd07+zt0yM7Pi7vobgcc3rWVHeFdOPp93YjeY1Hqy9d0gcVRjztw4HugxsZdbosMmAggwgekHfUePk10EViMBxp0SRaumruZb82zZAz4StLdo3TNg+fLckCsu2OkHKIWju2YGM119xGk3SOi7Yvbg/NJtFOyheWEdi2ghLtxegaWzphbsZPIWNwwXx8+NaAWwc5zOsGk01JNPx3f2gPlHR+Wk3NZ6MreMNBFuOx88/bZnefKTIIRz5hAkAmxwhtwrNILf+w6mnp7c51eqMGhGLGjA3fjiwbwaznfDxvn2F5xdPPe1s8GOFxydNrpwFi8x5PnddsUGBzzGIgsNyYnBIIqEMGZcZ40baUucBimLC3GxMcV758dBi7A2q8YT4jWhuNPwPNqABiAK7/Traj9H11ezwAGIesw=

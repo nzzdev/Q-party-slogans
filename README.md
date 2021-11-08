@@ -1,6 +1,6 @@
 # Q Party Slogans [![Build Status](https://travis-ci.com/nzzdev/Q-party-slogans.svg?token=bwR7zbPTTpEoDxbY2dJR&branch=dev)](https://travis-ci.com/nzzdev/Q-party-slogans)
 
-**Maintainer**: [manuelroth](https://github.com/manuelroth)
+**Maintainer**: [Nicolas Staub](https://github.com/fromdusttilldawn)
 
 Q Party Slogans is one tool of the Q toolbox to render party slogans.
 Test it in the [demo](https://editor.q.tools).
